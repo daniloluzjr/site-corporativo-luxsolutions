@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #5648C3 0%, #7B68EE 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.content {
+    padding: 40px;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.role-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.role-card:hover {
+    transform: translateY(-5px);
+}
+
+.role-header {
+    padding: 25px;
+    color: white;
+    text-align: center;
+}
+
+.role-header.healthcare {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.role-header.admin {
+    background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+}
+
+.role-header.supervisor {
+    background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+}
+
+.role-header.coordinator {
+    background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
+}
+
+.role-header.manager {
+    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+}
+
+.role-header.therapist {
+    background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+}
+
+.role-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.role-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.role-code {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.role-body {
+    padding: 25px;
+    background: #f8f9fa;
+}
+
+.permissions-section {
+    margin-bottom: 20px;
+}
+
+.permissions-section h4 {
+    color: #5648C3;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 5px;
+}
+
+.permission-list {
+    list-style: none;
+}
+
+.permission-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    align-items: center;
+}
+
+.permission-list li:last-child {
+    border-bottom: none;
+}
+
+.permission-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.permission-icon.allowed {
+    color: #28a745;
+}
+
+.permission-icon.restricted {
+    color: #dc3545;
+}
+
+.permission-icon.partial {
+    color: #ffc107;
+}
+
+.login-flow {
+    background: #e8f5e8;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 40px;
+    border-left: 5px solid #28a745;
+}
+
+.login-flow h3 {
+    color: #28a745;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.flow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.flow-step {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #e9ecef;
+}
+
+.flow-step-number {
+    background: #28a745;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-weight: bold;
+}
+
+.flow-step h4 {
+    color: #28a745;
+    margin-bottom: 10px;
+}
+
+.company-info {
+    background: #fff3cd;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 30px;
+    border-left: 5px solid #ffc107;
+}
+
+.company-info h3 {
+    color: #856404;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.company-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.company-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #ffc107;
+}
+
+.company-card h4 {
+    color: #856404;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.company-code {
+    background: #fff3cd;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #856404;
+    margin-bottom: 15px;
+}
+
+.company-roles {
+    list-style: none;
+}
+
+.company-roles li {
+    padding: 5px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.company-roles li:last-child {
+    border-bottom: none;
+}
+
+.security-info {
+    background: #d1ecf1;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border-left: 5px solid #17a2b8;
+}
+
+.security-info h3 {
+    color: #0c5460;
+    margin-bottom: 15px;
+}
+
+.security-info ul {
+    color: #0c5460;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .flow-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .company-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+} 

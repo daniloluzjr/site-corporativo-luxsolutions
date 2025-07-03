@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InisCare System - Role-Based Access Control</title>
+    <link rel="stylesheet" href="diagram_styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 InisCare System - Role-Based Access Control</h1>
+            <p>Different Permissions and Features Based on Employee Role</p>
+        </div>
+
+        <div class="content">
+            <div class="login-flow">
+                <h3>🔑 Login Process & Role Detection</h3>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="flow-step-number">1</div>
+                        <h4>Enter Employee Code</h4>
+                        <p>Format: XXX-XXX-XXX<br>Example: 100-005-001</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">2</div>
+                        <h4>System Detects Company</h4>
+                        <p>100 = Lux Health Systems<br>101 = InisCare Glasnevin</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">3</div>
+                        <h4>System Detects Role</h4>
+                        <p>005 = Healthcare Assistant<br>001 = Administrator</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">4</div>
+                        <h4>Access Granted</h4>
+                        <p>User sees only features<br>they have permission for</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-header healthcare">
+                        <div class="role-icon">👨‍⚕️</div>
+                        <div class="role-title">Healthcare Assistant</div>
+                        <div class="role-code">Code: XXX-005-XXX</div>
+                    </div>
+                    <div class="role-body">
+                        <div class="permissions-section">
+                            <h4>✅ Allowed Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon allowed">✅</span> Create care logs</li>
+                                <li><span class="permission-icon allowed">✅</span> Select assigned clients</li>
+                                <li><span class="permission-icon allowed">✅</span> Record care activities</li>
+                                <li><span class="permission-icon allowed">✅</span> Add comments to logs</li>
+                                <li><span class="permission-icon allowed">✅</span> View own care history</li>
+                            </ul>
+                        </div>
+                        <div class="permissions-section">
+                            <h4>❌ Restricted Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon restricted">❌</span> Access admin panel</li>
+                                <li><span class="permission-icon restricted">❌</span> Manage users</li>
+                                <li><span class="permission-icon restricted">❌</span> Add/delete clients</li>
+                                <li><span class="permission-icon restricted">❌</span> View all system logs</li>
+                                <li><span class="permission-icon restricted">❌</span> Generate reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-header admin">
+                        <div class="role-icon">👑</div>
+                        <div class="role-title">Administrator</div>
+                        <div class="role-code">Code: XXX-001-XXX</div>
+                    </div>
+                    <div class="role-body">
+                        <div class="permissions-section">
+                            <h4>✅ Allowed Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon allowed">✅</span> Full system access</li>
+                                <li><span class="permission-icon allowed">✅</span> Manage all users</li>
+                                <li><span class="permission-icon allowed">✅</span> Add/delete clients</li>
+                                <li><span class="permission-icon allowed">✅</span> View all care logs</li>
+                                <li><span class="permission-icon allowed">✅</span> Generate reports</li>
+                                <li><span class="permission-icon allowed">✅</span> System configuration</li>
+                                <li><span class="permission-icon allowed">✅</span> Email management</li>
+                            </ul>
+                        </div>
+                        <div class="permissions-section">
+                            <h4>⚠️ Special Permissions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon partial">⚠️</span> Can create care logs</li>
+                                <li><span class="permission-icon partial">⚠️</span> Can access all clients</li>
+                                <li><span class="permission-icon partial">⚠️</span> Can override restrictions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-header supervisor">
+                        <div class="role-icon">👨‍💼</div>
+                        <div class="role-title">Supervisor</div>
+                        <div class="role-code">Code: XXX-004-XXX</div>
+                    </div>
+                    <div class="role-body">
+                        <div class="permissions-section">
+                            <h4>✅ Allowed Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon allowed">✅</span> Create care logs</li>
+                                <li><span class="permission-icon allowed">✅</span> View team members' logs</li>
+                                <li><span class="permission-icon allowed">✅</span> Manage assigned clients</li>
+                                <li><span class="permission-icon allowed">✅</span> Generate team reports</li>
+                                <li><span class="permission-icon allowed">✅</span> Monitor care quality</li>
+                            </ul>
+                        </div>
+                        <div class="permissions-section">
+                            <h4>❌ Restricted Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon restricted">❌</span> Manage users</li>
+                                <li><span class="permission-icon restricted">❌</span> System configuration</li>
+                                <li><span class="permission-icon restricted">❌</span> Access other teams</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-header coordinator">
+                        <div class="role-icon">📋</div>
+                        <div class="role-title">Coordinator</div>
+                        <div class="role-code">Code: XXX-003-XXX</div>
+                    </div>
+                    <div class="role-body">
+                        <div class="permissions-section">
+                            <h4>✅ Allowed Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon allowed">✅</span> Create care logs</li>
+                                <li><span class="permission-icon allowed">✅</span> Manage client schedules</li>
+                                <li><span class="permission-icon allowed">✅</span> View care assignments</li>
+                                <li><span class="permission-icon allowed">✅</span> Coordinate care teams</li>
+                                <li><span class="permission-icon allowed">✅</span> Generate scheduling reports</li>
+                            </ul>
+                        </div>
+                        <div class="permissions-section">
+                            <h4>❌ Restricted Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon restricted">❌</span> Manage users</li>
+                                <li><span class="permission-icon restricted">❌</span> System configuration</li>
+                                <li><span class="permission-icon restricted">❌</span> Delete clients</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-header manager">
+                        <div class="role-icon">💼</div>
+                        <div class="role-title">Manager</div>
+                        <div class="role-code">Code: XXX-002-XXX</div>
+                    </div>
+                    <div class="role-body">
+                        <div class="permissions-section">
+                            <h4>✅ Allowed Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon allowed">✅</span> Create care logs</li>
+                                <li><span class="permission-icon allowed">✅</span> Manage department users</li>
+                                <li><span class="permission-icon allowed">✅</span> View department reports</li>
+                                <li><span class="permission-icon allowed">✅</span> Manage department clients</li>
+                                <li><span class="permission-icon allowed">✅</span> Performance monitoring</li>
+                            </ul>
+                        </div>
+                        <div class="permissions-section">
+                            <h4>❌ Restricted Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon restricted">❌</span> System configuration</li>
+                                <li><span class="permission-icon restricted">❌</span> Access other departments</li>
+                                <li><span class="permission-icon restricted">❌</span> Global user management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-header therapist">
+                        <div class="role-icon">🧠</div>
+                        <div class="role-title">Therapist</div>
+                        <div class="role-code">Code: XXX-006-XXX</div>
+                    </div>
+                    <div class="role-body">
+                        <div class="permissions-section">
+                            <h4>✅ Allowed Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon allowed">✅</span> Create care logs</li>
+                                <li><span class="permission-icon allowed">✅</span> Access assigned clients</li>
+                                <li><span class="permission-icon allowed">✅</span> Record therapy sessions</li>
+                                <li><span class="permission-icon allowed">✅</span> View client progress</li>
+                                <li><span class="permission-icon allowed">✅</span> Generate therapy reports</li>
+                            </ul>
+                        </div>
+                        <div class="permissions-section">
+                            <h4>❌ Restricted Actions</h4>
+                            <ul class="permission-list">
+                                <li><span class="permission-icon restricted">❌</span> Access admin panel</li>
+                                <li><span class="permission-icon restricted">❌</span> Manage users</li>
+                                <li><span class="permission-icon restricted">❌</span> View non-therapy logs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="company-info">
+                <h3>🏢 Company-Specific Access Control</h3>
+                <div class="company-grid">
+                    <div class="company-card">
+                        <h4>Lux Health Systems</h4>
+                        <div class="company-code">Employee Code: 100-XXX-XXX</div>
+                        <ul class="company-roles">
+                            <li><strong>Admin:</strong> 100-001-XXX</li>
+                            <li><strong>Manager:</strong> 100-002-XXX</li>
+                            <li><strong>Coordinator:</strong> 100-003-XXX</li>
+                            <li><strong>Supervisor:</strong> 100-004-XXX</li>
+                            <li><strong>Healthcare:</strong> 100-005-XXX</li>
+                            <li><strong>Therapist:</strong> 100-006-XXX</li>
+                        </ul>
+                    </div>
+                    <div class="company-card">
+                        <h4>InisCare Glasnevin</h4>
+                        <div class="company-code">Employee Code: 101-XXX-XXX</div>
+                        <ul class="company-roles">
+                            <li><strong>Admin:</strong> 101-001-XXX</li>
+                            <li><strong>Manager:</strong> 101-002-XXX</li>
+                            <li><strong>Coordinator:</strong> 101-003-XXX</li>
+                            <li><strong>Supervisor:</strong> 101-004-XXX</li>
+                            <li><strong>Healthcare:</strong> 101-005-XXX</li>
+                            <li><strong>Therapist:</strong> 101-006-XXX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="security-info">
+                <h3>🔒 Security Features</h3>
+                <ul>
+                    <li><strong>Role Validation:</strong> Employee code must match selected role</li>
+                    <li><strong>Company Isolation:</strong> Users can only access their company's data</li>
+                    <li><strong>Permission Checks:</strong> Every action is validated against user permissions</li>
+                    <li><strong>Session Management:</strong> Secure token-based authentication</li>
+                    <li><strong>Audit Trail:</strong> All actions are logged for security monitoring</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
