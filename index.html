@@ -1,225 +1,428 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lux Solutions - Healthcare Technology Solutions</title>
-    <meta name="description" content="Lux Solutions oferece soluções tecnológicas inovadoras para o setor de saúde, incluindo o sistema InisCare para gestão de cuidados.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lux Solutions - Healthcare Technology</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('assets/background.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      color: #222;
+      overflow-x: hidden;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px 0 32px;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      height: 60px;
+      width: auto;
+    }
+    .contact-icon {
+      position: fixed;
+      top: 32px;
+      right: 32px;
+      z-index: 100;
+      cursor: pointer;
+      background: rgba(255,255,255,0.85);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 12px;
+      transition: box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-icon:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+    .contact-icon img {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+    .contact-form-modal {
+      position: fixed;
+      top: 32px;
+      right: 32px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 32px 24px 24px 24px;
+      z-index: 200;
+      min-width: 320px;
+      max-width: 90vw;
+      display: none;
+      flex-direction: column;
+      animation: fadeIn 0.3s;
+    }
+    .contact-form-modal.open {
+      display: flex;
+    }
+    .contact-form-modal h2 {
+      margin: 0 0 16px 0;
+      font-size: 1.3rem;
+      color: #5a4fcf;
+      font-weight: 700;
+    }
+    .contact-form-modal label {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: #444;
+    }
+    .contact-form-modal input,
+    .contact-form-modal textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 14px;
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: none;
+    }
+    .contact-form-modal button[type="submit"] {
+      background: #5a4fcf;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 12px 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      width: 100%;
+      margin-top: 8px;
+      box-shadow: 0 2px 8px rgba(90,79,207,0.10);
+      letter-spacing: 0.5px;
+    }
+    .contact-form-modal button[type="submit"]:hover {
+      background: #3d2fa0;
+      box-shadow: 0 4px 16px rgba(90,79,207,0.18);
+    }
+    .contact-form-modal .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.85);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      color: #5a4fcf;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(90,79,207,0.08);
+      transition: background 0.2s, color 0.2s;
+      padding: 0;
+      min-width: 0;
+      min-height: 0;
+      line-height: 1;
+      z-index: 9999;
+    }
+    .contact-form-modal .close-btn:hover {
+      background: #5a4fcf;
+      color: #fff;
+    }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      position: relative;
+      z-index: 1;
+    }
+    .how-it-works-img {
+      max-width: 95vw;
+      width: 420px;
+      margin-top: 40px;
+      position: relative;
+      z-index: 2;
+      display: block;
+    }
+    /* Tooltips nas fases */
+    .step-tooltip {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      background: #fff;
+      color: #333;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      padding: 12px 16px;
+      font-size: 1rem;
+      min-width: 220px;
+      max-width: 260px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 10;
+    }
+    .step-marker {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: none;
+      cursor: pointer;
+      z-index: 5;
+    }
+    .step-marker:hover + .step-tooltip,
+    .step-marker:focus + .step-tooltip {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Posicionamento dos marcadores sobre a imagem do fluxo */
+    .step1-marker { top: 60px; left: 10px; }
+    .step2-marker { top: 260px; left: 10px; }
+    .step3-marker { top: 440px; left: 60px; }
+    @media (max-width: 600px) {
+      .header { flex-direction: column; align-items: flex-start; padding: 16px 8px 0 8px; }
+      .logo { height: 44px; }
+      .contact-icon { top: 12px; right: 12px; padding: 8px; }
+      .contact-form-modal { top: 12px; right: 12px; min-width: 90vw; padding: 18px 8px 8px 8px; }
+      .main-content { min-height: 60vh; }
+      .how-it-works-img { width: 98vw; max-width: 99vw; }
+      .step-tooltip { font-size: 0.95rem; min-width: 160px; max-width: 200px; }
+      .step-marker { width: 36px; height: 36px; }
+      .step1-marker { top: 30px; left: 0; }
+      .step2-marker { top: 160px; left: 0; }
+      .step3-marker { top: 320px; left: 30px; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: none; }
+    }
+    .corner-logo {
+      position: fixed;
+      right: 32px;
+      bottom: 32px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.85);
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+      padding: 13px 23px;
+      transition: box-shadow 0.2s;
+    }
+    .corner-logo-img {
+      width: 210px;
+      max-width: 44vw;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .corner-logo { right: 8px; bottom: 8px; padding: 3px 7px; border-radius: 14px; }
+      .corner-logo-img { width: 120px; }
+    }
+    /* Hotspots para tooltips sobre a imagem */
+    .hotspot {
+      position: absolute;
+      z-index: 20;
+      cursor: pointer;
+      width: 70px;
+      height: 70px;
+      background: none;
+    }
+    .hotspot1 { top: 10px; left: 30px; }
+    .hotspot2 { top: 210px; left: 40px; }
+    .hotspot3 { top: 270px; left: 60px; }
+    @media (max-width: 600px) {
+      .hotspot { width: 40px; height: 40px; }
+      .hotspot1 { top: 0px; left: 10px; }
+      .hotspot2 { top: 110px; left: 20px; }
+      .hotspot3 { top: 140px; left: 30px; }
+    }
+    .custom-tooltip {
+      display: none;
+      position: absolute;
+      left: 80px;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      color: #5a4fcf;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+      padding: 18px 22px;
+      font-size: 1.08rem;
+      font-family: inherit;
+      min-width: 220px;
+      max-width: 320px;
+      z-index: 30;
+      animation: fadeIn 0.2s;
+      font-weight: 500;
+    }
+    .hotspot:hover .custom-tooltip,
+    .hotspot:focus .custom-tooltip {
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .custom-tooltip {
+        left: 50px;
+        font-size: 0.98rem;
+        min-width: 120px;
+        max-width: 180px;
+        padding: 10px 12px;
+      }
+    }
+    .how-it-works-container {
+      position: relative;
+      display: inline-block;
+    }
+    .howit-box {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 340px;
+      max-width: 38vw;
+      min-width: 220px;
+      background: rgba(255,255,255,0.93);
+      color: #5a4fcf;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+      padding: 28px 24px;
+      font-size: 1.08rem;
+      font-family: inherit;
+      z-index: 30;
+      text-align: justify;
+      font-weight: 500;
+    }
+    .how-it-works-container:hover .howit-box,
+    .how-it-works-container:focus-within .howit-box {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .howit-box.left {
+      left: -350px;
+      right: auto;
+    }
+    .howit-box.right {
+      right: -350px;
+      left: auto;
+    }
+    @media (max-width: 1100px) {
+      .howit-box { width: 180px; max-width: 32vw; min-width: 120px; padding: 18px 10px; font-size: 0.98rem; }
+      .howit-box.left { left: -200px; }
+      .howit-box.right { right: -200px; }
+    }
+    @media (max-width: 800px) {
+      .howit-box { width: 90vw; max-width: 98vw; left: 50% !important; right: auto !important; transform: translate(-50%, -110%); top: 0; }
+      .howit-box.right { top: 100%; transform: translate(-50%, 10%); }
+    }
+    @media (max-width: 600px) {
+      .howit-box { font-size: 0.93rem; padding: 10px 4px; }
+    }
+    .howit-institutional {
+      margin-top: 36px;
+      text-align: center;
+      color: #5a4fcf;
+      font-size: 1.08rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.93);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(90,79,207,0.08);
+      padding: 18px 18px 12px 18px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 0;
+    }
+    @media (max-width: 800px) {
+      .howit-institutional { font-size: 0.98rem; padding: 10px 4px; max-width: 98vw; }
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="logo">
-                    <h1>Lux Solutions</h1>
-                    <p>Healthcare Technology</p>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#products">Produtos</a></li>
-                    <li><a href="#contact">Contato</a></li>
-                </ul>
-                <div class="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1>Transformando o Cuidado em Saúde</h1>
-                    <p>Soluções tecnológicas inovadoras que revolucionam a gestão de cuidados em instituições de saúde.</p>
-                    <div class="hero-buttons">
-                        <a href="#products" class="btn btn-primary">Conheça Nossos Produtos</a>
-                        <a href="#contact" class="btn btn-secondary">Fale Conosco</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="hero-image.png" alt="Healthcare Technology">
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <h2>Sobre a Lux Solutions</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>A Lux Solutions é uma empresa especializada em desenvolvimento de soluções tecnológicas para o setor de saúde. Nossa missão é simplificar e otimizar processos de cuidado, proporcionando ferramentas eficientes e intuitivas para profissionais da área.</p>
-                        <p>Com anos de experiência no setor, desenvolvemos o sistema InisCare, uma plataforma completa para gestão de cuidados que está revolucionando a forma como instituições de saúde gerenciam seus processos.</p>
-                    </div>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>100%</h3>
-                            <p>Funcional</p>
-                        </div>
-                        <div class="stat">
-                            <h3>24/7</h3>
-                            <p>Disponível</p>
-                        </div>
-                        <div class="stat">
-                            <h3>100%</h3>
-                            <p>Seguro</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="products" class="products">
-            <div class="container">
-                <h2>Nossos Produtos</h2>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-icon">🏥</div>
-                        <h3>Sistema InisCare</h3>
-                        <p>Plataforma completa para gestão de cuidados em instituições de saúde. Controle total de logs de cuidado, gestão de clientes e notificações automáticas.</p>
-                        <div class="product-features">
-                            <ul>
-                                <li>✅ Gestão de Cuidados</li>
-                                <li>✅ Controle de Acesso</li>
-                                <li>✅ Notificações Automáticas</li>
-                                <li>✅ Relatórios Detalhados</li>
-                                <li>✅ Interface Mobile</li>
-                            </ul>
-                        </div>
-                        <a href="Diagrams/role_permissions_diagram.html" class="btn btn-outline">Ver Demonstração</a>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-icon">📱</div>
-                        <h3>PWA Mobile</h3>
-                        <p>Aplicativo web progressivo que funciona como app nativo no celular. Instalável, funciona offline e oferece experiência mobile otimizada.</p>
-                        <div class="product-features">
-                            <ul>
-                                <li>✅ Instalável no Celular</li>
-                                <li>✅ Funciona Offline</li>
-                                <li>✅ Notificações Push</li>
-                                <li>✅ Interface Nativa</li>
-                                <li>✅ Atualizações Automáticas</li>
-                            </ul>
-                        </div>
-                        <a href="http://168.231.115.108" class="btn btn-outline">Acessar Sistema</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="container">
-                <h2>Por que escolher a Lux Solutions?</h2>
-                <div class="features-grid">
-                    <div class="feature">
-                        <div class="feature-icon">🔒</div>
-                        <h3>Segurança Total</h3>
-                        <p>Autenticação DKIM, SPF e DMARC configurados. Dados protegidos com criptografia avançada.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Alta Performance</h3>
-                        <p>Sistema otimizado para máxima velocidade e eficiência, mesmo com muitos usuários simultâneos.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">📊</div>
-                        <h3>Relatórios Avançados</h3>
-                        <p>Geração automática de relatórios detalhados para análise e tomada de decisões.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">🔄</div>
-                        <h3>Atualizações Automáticas</h3>
-                        <p>Sistema sempre atualizado com as últimas funcionalidades e correções de segurança.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Entre em Contato</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Informações de Contato</h3>
-                        <div class="contact-item">
-                            <span class="contact-icon">📧</span>
-                            <div>
-                                <h4>Email</h4>
-                                <p>danilojun@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">🌐</span>
-                            <div>
-                                <h4>Website</h4>
-                                <p>luxsolutions.tech</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">🏢</span>
-                            <div>
-                                <h4>Empresa</h4>
-                                <p>Lux Solutions Health Systems</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <h3>Envie uma Mensagem</h3>
-                        <form action="https://formspree.io/f/your-form-id" method="POST">
-                            <div class="form-group">
-                                <input type="text" name="name" placeholder="Seu Nome" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" placeholder="Seu Email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="subject" placeholder="Assunto" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Lux Solutions</h3>
-                    <p>Transformando o cuidado em saúde através da tecnologia.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Produtos</h4>
-                    <ul>
-                        <li><a href="#products">Sistema InisCare</a></li>
-                        <li><a href="#products">PWA Mobile</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Links Úteis</h4>
-                    <ul>
-                        <li><a href="Diagrams/system_diagram.html">Como Funciona</a></li>
-                        <li><a href="Diagrams/role_permissions_diagram.html">Permissões</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Lux Solutions. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <!-- Ícone de contato -->
+  <div class="contact-icon" id="contactIcon" tabindex="0" aria-label="Contact Us">
+    <img src="assets/icon-email.png" alt="Contact Us">
+  </div>
+  <div class="contact-form-modal" id="contactFormModal" aria-modal="true" role="dialog">
+    <button class="close-btn" id="closeContactForm" aria-label="Close">&times;</button>
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div id="formStatus" style="margin-top:10px;font-size:1rem;"></div>
+  </div>
+  <div class="main-content">
+    <div class="how-it-works-container">
+      <img src="assets/how-it-works.png" alt="How it works" class="how-it-works-img">
+      <div class="howit-box left">
+        As soon as the employee clicks the "Send" button, all information about the care and activities performed at the client's residence is instantly transmitted to the system. The company securely stores, processes, and organizes this data in real time. After verification, the information is forwarded to designated family members or supervisors, who are immediately notified about the services provided to their loved one.
+      </div>
+      <div class="howit-box right">
+        This digital process improves communication and transparency between caregivers and families, replacing outdated paper reports with a faster, more efficient, and eco-friendly solution. By digitizing the workflow, we ensure a modern, sustainable, and compassionate way to manage health and care information for everyone involved. We are developing these resources especially for homecare solutions. Contact us for info.
+      </div>
+    </div>
+  </div>
+  <!-- Logo fixo no canto inferior direito -->
+  <div class="corner-logo">
+    <img src="assets/lux_logo.png" alt="Lux Solutions Logo" class="corner-logo-img">
+  </div>
+  <script>
+    // Contact form modal logic
+    const contactIcon = document.getElementById('contactIcon');
+    const contactFormModal = document.getElementById('contactFormModal');
+    const closeContactForm = document.getElementById('closeContactForm');
+    function openContactForm() {
+      contactFormModal.classList.add('open');
+      document.getElementById('name').focus();
+    }
+    function closeContactFormModal() {
+      contactFormModal.classList.remove('open');
+    }
+    contactIcon.addEventListener('click', openContactForm);
+    contactIcon.addEventListener('keypress', function(e){ if(e.key==='Enter'){ openContactForm(); }});
+    closeContactForm.addEventListener('click', closeContactFormModal);
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape') closeContactFormModal();
+    });
+    // Fecha ao clicar fora do modal
+    window.addEventListener('mousedown', function(e){
+      if(contactFormModal.classList.contains('open') && !contactFormModal.contains(e.target) && e.target!==contactIcon) {
+        closeContactFormModal();
+      }
+    });
+    // Envio do formulário (EmailJS ou mailto)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      // Envio simples por mailto (pode ser trocado por EmailJS depois)
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      const mailto = `mailto:daniloluz@aim.com?subject=Contact%20from%20Lux%20Solutions%20Site&body=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0AMessage:%20${encodeURIComponent(message)}`;
+      window.location.href = mailto;
+      document.getElementById('formStatus').innerText = 'Opening your email client...';
+      setTimeout(closeContactFormModal, 2000);
+    });
+    // Tooltips dos números: já funcionam via CSS :hover e :focus
+  </script>
 </body>
 </html> 
