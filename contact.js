@@ -1,11 +1,3 @@
-// EmailJS Configuration
-const EMAILJS_USER_ID = 'bxzD1INYBWHAGX2NV';
-const EMAILJS_SERVICE_ID = 'service_smdnzwm';
-const EMAILJS_TEMPLATE_ID = 'template_zoekcxq';
-
-// Initialize EmailJS
-emailjs.init(EMAILJS_USER_ID);
-
 // DOM Elements
 const contactForm = document.getElementById('contactForm');
 const submitButton = document.getElementById('submitButton');
@@ -20,55 +12,57 @@ backButton.addEventListener('click', function() {
 // Form submission
 contactForm.addEventListener('submit', function(e) {
   e.preventDefault();
-  
+
   // Get form data
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const message = document.getElementById('message').value.trim();
-  
+
   // Validate form
   if (!name || !email || !message) {
     showStatus('Please fill in all fields.', 'error');
     return;
   }
-  
+
   if (!isValidEmail(email)) {
     showStatus('Please enter a valid email address.', 'error');
     return;
   }
-  
+
   // Disable submit button and show loading
   submitButton.disabled = true;
   submitButton.textContent = 'Sending...';
   showStatus('Sending your message...', 'loading');
-  
-  // Prepare EmailJS parameters
-  const templateParams = {
-    from_name: name,
-    from_email: email,
-    message: message,
-    to_email: 'daniloluz@aim.com'
-  };
-  
-  // Send email via EmailJS
-  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-    .then(function(response) {
-      console.log('SUCCESS!', response.status, response.text);
-      showStatus('Message sent successfully! We\'ll get back to you soon.', 'success');
-      contactForm.reset();
-      
-      // Re-enable submit button after delay
-      setTimeout(() => {
+
+  // Prepare form data
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append('message', message);
+
+  // Send data to PHP endpoint
+  fetch('send_contact.php', {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        showStatus('Message sent successfully! We\'ll get back to you soon.', 'success');
+        contactForm.reset();
+        setTimeout(() => {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send Message';
+          hideStatus();
+        }, 3000);
+      } else {
+        showStatus(data.error || 'Failed to send message. Please try again.', 'error');
         submitButton.disabled = false;
         submitButton.textContent = 'Send Message';
-        hideStatus();
-      }, 3000);
+      }
     })
-    .catch(function(error) {
-      console.log('FAILED...', error);
+    .catch(error => {
       showStatus('Failed to send message. Please try again.', 'error');
-      
-      // Re-enable submit button
       submitButton.disabled = false;
       submitButton.textContent = 'Send Message';
     });
