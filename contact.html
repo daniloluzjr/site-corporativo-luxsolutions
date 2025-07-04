@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Lux Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <!-- Botão voltar -->
+  <button class="back-button" id="backButton" aria-label="Back to main page">
+    ←
+  </button>
+  
+  <div class="contact-container">
+    <form class="contact-form" id="contactForm">
+      <h1>Contact Us</h1>
+      
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+      
+      <button type="submit" id="submitButton">Send Message</button>
+      
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </div>
+  
+  <!-- Logo fixo no canto inferior direito -->
+  <div class="corner-logo">
+    <img src="assets/lux_logo.png" alt="Lux Solutions Logo" class="corner-logo-img">
+  </div>
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html> 

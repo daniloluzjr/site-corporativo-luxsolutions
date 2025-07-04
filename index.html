@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lux Solutions - Healthcare Technology</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/fav_icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -52,92 +55,6 @@
       width: 32px;
       height: 32px;
       display: block;
-    }
-    .contact-form-modal {
-      position: fixed;
-      top: 32px;
-      right: 32px;
-      background: rgba(255,255,255,0.92);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-      padding: 32px 24px 24px 24px;
-      z-index: 200;
-      min-width: 320px;
-      max-width: 90vw;
-      display: none;
-      flex-direction: column;
-      animation: fadeIn 0.3s;
-    }
-    .contact-form-modal.open {
-      display: flex;
-    }
-    .contact-form-modal h2 {
-      margin: 0 0 16px 0;
-      font-size: 1.3rem;
-      color: #5a4fcf;
-      font-weight: 700;
-    }
-    .contact-form-modal label {
-      font-size: 1rem;
-      margin-bottom: 4px;
-      color: #444;
-    }
-    .contact-form-modal input,
-    .contact-form-modal textarea {
-      width: 100%;
-      padding: 8px 10px;
-      margin-bottom: 14px;
-      border: 1px solid #d0d0d0;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-family: inherit;
-      resize: none;
-    }
-    .contact-form-modal button[type="submit"] {
-      background: #5a4fcf;
-      color: #fff;
-      border: none;
-      border-radius: 24px;
-      padding: 12px 0;
-      font-size: 1.05rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s, box-shadow 0.2s;
-      width: 100%;
-      margin-top: 8px;
-      box-shadow: 0 2px 8px rgba(90,79,207,0.10);
-      letter-spacing: 0.5px;
-    }
-    .contact-form-modal button[type="submit"]:hover {
-      background: #3d2fa0;
-      box-shadow: 0 4px 16px rgba(90,79,207,0.18);
-    }
-    .contact-form-modal .close-btn {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      width: 32px;
-      height: 32px;
-      background: rgba(255,255,255,0.85);
-      border: none;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      color: #5a4fcf;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 8px rgba(90,79,207,0.08);
-      transition: background 0.2s, color 0.2s;
-      padding: 0;
-      min-width: 0;
-      min-height: 0;
-      line-height: 1;
-      z-index: 9999;
-    }
-    .contact-form-modal .close-btn:hover {
-      background: #5a4fcf;
-      color: #fff;
     }
     .main-content {
       display: flex;
@@ -196,7 +113,6 @@
       .header { flex-direction: column; align-items: flex-start; padding: 16px 8px 0 8px; }
       .logo { height: 44px; }
       .contact-icon { top: 12px; right: 12px; padding: 8px; }
-      .contact-form-modal { top: 12px; right: 12px; min-width: 90vw; padding: 18px 8px 8px 8px; }
       .main-content { min-height: 60vh; }
       .how-it-works-img { width: 98vw; max-width: 99vw; }
       .step-tooltip { font-size: 0.95rem; min-width: 160px; max-width: 200px; }
@@ -357,20 +273,7 @@
   <div class="contact-icon" id="contactIcon" tabindex="0" aria-label="Contact Us">
     <img src="assets/icon-email.png" alt="Contact Us">
   </div>
-  <div class="contact-form-modal" id="contactFormModal" aria-modal="true" role="dialog">
-    <button class="close-btn" id="closeContactForm" aria-label="Close">&times;</button>
-    <h2>Contact Us</h2>
-    <form id="contactForm">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <div id="formStatus" style="margin-top:10px;font-size:1rem;"></div>
-  </div>
+  
   <div class="main-content">
     <div class="how-it-works-container">
       <img src="assets/how-it-works.png" alt="How it works" class="how-it-works-img">
@@ -382,47 +285,26 @@
       </div>
     </div>
   </div>
+  
   <!-- Logo fixo no canto inferior direito -->
   <div class="corner-logo">
     <img src="assets/lux_logo.png" alt="Lux Solutions Logo" class="corner-logo-img">
   </div>
+  
   <script>
-    // Contact form modal logic
+    // Contact icon redirects to contact page
     const contactIcon = document.getElementById('contactIcon');
-    const contactFormModal = document.getElementById('contactFormModal');
-    const closeContactForm = document.getElementById('closeContactForm');
-    function openContactForm() {
-      contactFormModal.classList.add('open');
-      document.getElementById('name').focus();
+    
+    function goToContactPage() {
+      window.location.href = 'contact.html';
     }
-    function closeContactFormModal() {
-      contactFormModal.classList.remove('open');
-    }
-    contactIcon.addEventListener('click', openContactForm);
-    contactIcon.addEventListener('keypress', function(e){ if(e.key==='Enter'){ openContactForm(); }});
-    closeContactForm.addEventListener('click', closeContactFormModal);
-    document.addEventListener('keydown', function(e){
-      if(e.key==='Escape') closeContactFormModal();
-    });
-    // Fecha ao clicar fora do modal
-    window.addEventListener('mousedown', function(e){
-      if(contactFormModal.classList.contains('open') && !contactFormModal.contains(e.target) && e.target!==contactIcon) {
-        closeContactFormModal();
+    
+    contactIcon.addEventListener('click', goToContactPage);
+    contactIcon.addEventListener('keypress', function(e) {
+      if(e.key === 'Enter') {
+        goToContactPage();
       }
     });
-    // Envio do formulário (EmailJS ou mailto)
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      // Envio simples por mailto (pode ser trocado por EmailJS depois)
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      const mailto = `mailto:daniloluz@aim.com?subject=Contact%20from%20Lux%20Solutions%20Site&body=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0AMessage:%20${encodeURIComponent(message)}`;
-      window.location.href = mailto;
-      document.getElementById('formStatus').innerText = 'Opening your email client...';
-      setTimeout(closeContactFormModal, 2000);
-    });
-    // Tooltips dos números: já funcionam via CSS :hover e :focus
   </script>
 </body>
 </html> 

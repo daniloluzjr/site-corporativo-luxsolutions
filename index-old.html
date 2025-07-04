@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lux Solutions - Healthcare Technology</title>
+  <link rel="icon" type="image/png" href="assets/fav_icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('assets/background.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      color: #222;
+      overflow-x: hidden;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px 0 32px;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      height: 60px;
+      width: auto;
+    }
+    .contact-icon {
+      position: fixed;
+      top: 32px;
+      right: 32px;
+      z-index: 100;
+      cursor: pointer;
+      background: rgba(255,255,255,0.85);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 12px;
+      transition: box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-icon:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+    .contact-icon img {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+    .contact-form-modal {
+      position: fixed;
+      top: 32px;
+      right: 32px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 32px 24px 24px 24px;
+      z-index: 200;
+      min-width: 320px;
+      max-width: 90vw;
+      display: none;
+      flex-direction: column;
+      animation: fadeIn 0.3s;
+    }
+    .contact-form-modal.open {
+      display: flex;
+    }
+    .contact-form-modal h2 {
+      margin: 0 0 16px 0;
+      font-size: 1.3rem;
+      color: #5a4fcf;
+      font-weight: 700;
+    }
+    .contact-form-modal label {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: #444;
+    }
+    .contact-form-modal input,
+    .contact-form-modal textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 14px;
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: none;
+    }
+    .contact-form-modal button[type="submit"] {
+      background: #5a4fcf;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 12px 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      width: 100%;
+      margin-top: 8px;
+      box-shadow: 0 2px 8px rgba(90,79,207,0.10);
+      letter-spacing: 0.5px;
+    }
+    .contact-form-modal button[type="submit"]:hover {
+      background: #3d2fa0;
+      box-shadow: 0 4px 16px rgba(90,79,207,0.18);
+    }
+    .contact-form-modal button[type="submit"]:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    /* Notificações */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      z-index: 10000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none;
+      animation: slideIn 0.3s ease-out;
+    }
+    .notification.success {
+      background: #4CAF50;
+      color: white;
+    }
+    .notification.error {
+      background: #f44336;
+      color: white;
+    }
+    .notification.loading {
+      background: #2196F3;
+      color: white;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .contact-form-modal .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.85);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      color: #5a4fcf;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(90,79,207,0.08);
+      transition: background 0.2s, color 0.2s;
+      padding: 0;
+      min-width: 0;
+      min-height: 0;
+      line-height: 1;
+      z-index: 9999;
+    }
+    .contact-form-modal .close-btn:hover {
+      background: #5a4fcf;
+      color: #fff;
+    }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      position: relative;
+      z-index: 1;
+    }
+    .how-it-works-img {
+      max-width: 95vw;
+      width: 420px;
+      margin-top: 40px;
+      position: relative;
+      z-index: 2;
+      display: block;
+    }
+    /* Tooltips nas fases */
+    .step-tooltip {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      background: #fff;
+      color: #333;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      padding: 12px 16px;
+      font-size: 1rem;
+      min-width: 220px;
+      max-width: 260px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 10;
+    }
+    .step-marker {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: none;
+      cursor: pointer;
+      z-index: 5;
+    }
+    .step-marker:hover + .step-tooltip,
+    .step-marker:focus + .step-tooltip {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Posicionamento dos marcadores sobre a imagem do fluxo */
+    .step1-marker { top: 60px; left: 10px; }
+    .step2-marker { top: 260px; left: 10px; }
+    .step3-marker { top: 440px; left: 60px; }
+    @media (max-width: 600px) {
+      .header { flex-direction: column; align-items: flex-start; padding: 16px 8px 0 8px; }
+      .logo { height: 44px; }
+      .contact-icon { top: 12px; right: 12px; padding: 8px; }
+      .contact-form-modal { top: 12px; right: 12px; min-width: 90vw; padding: 18px 8px 8px 8px; }
+      .main-content { min-height: 60vh; }
+      .how-it-works-img { width: 98vw; max-width: 99vw; }
+      .step-tooltip { font-size: 0.95rem; min-width: 160px; max-width: 200px; }
+      .step-marker { width: 36px; height: 36px; }
+      .step1-marker { top: 30px; left: 0; }
+      .step2-marker { top: 160px; left: 0; }
+      .step3-marker { top: 320px; left: 30px; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: none; }
+    }
+    .corner-logo {
+      position: fixed;
+      right: 32px;
+      bottom: 32px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.85);
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+      padding: 13px 23px;
+      transition: box-shadow 0.2s;
+    }
+    .corner-logo-img {
+      width: 210px;
+      max-width: 44vw;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .corner-logo { right: 8px; bottom: 8px; padding: 3px 7px; border-radius: 14px; }
+      .corner-logo-img { width: 120px; }
+    }
+    /* Hotspots para tooltips sobre a imagem */
+    .hotspot {
+      position: absolute;
+      z-index: 20;
+      cursor: pointer;
+      width: 70px;
+      height: 70px;
+      background: none;
+    }
+    .hotspot1 { top: 10px; left: 30px; }
+    .hotspot2 { top: 210px; left: 40px; }
+    .hotspot3 { top: 270px; left: 60px; }
+    @media (max-width: 600px) {
+      .hotspot { width: 40px; height: 40px; }
+      .hotspot1 { top: 0px; left: 10px; }
+      .hotspot2 { top: 110px; left: 20px; }
+      .hotspot3 { top: 140px; left: 30px; }
+    }
+    .custom-tooltip {
+      display: none;
+      position: absolute;
+      left: 80px;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      color: #5a4fcf;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+      padding: 18px 22px;
+      font-size: 1.08rem;
+      font-family: inherit;
+      min-width: 220px;
+      max-width: 320px;
+      z-index: 30;
+      animation: fadeIn 0.2s;
+      font-weight: 500;
+    }
+    .hotspot:hover .custom-tooltip,
+    .hotspot:focus .custom-tooltip {
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .custom-tooltip {
+        left: 50px;
+        font-size: 0.98rem;
+        min-width: 120px;
+        max-width: 180px;
+        padding: 10px 12px;
+      }
+    }
+    .how-it-works-container {
+      position: relative;
+      display: inline-block;
+    }
+    .howit-box {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 340px;
+      max-width: 38vw;
+      min-width: 220px;
+      background: rgba(255,255,255,0.93);
+      color: #5a4fcf;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+      padding: 28px 24px;
+      font-size: 1.08rem;
+      font-family: inherit;
+      z-index: 30;
+      text-align: justify;
+      font-weight: 500;
+    }
+    .how-it-works-container:hover .howit-box,
+    .how-it-works-container:focus-within .howit-box {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .howit-box.left {
+      left: -350px;
+      right: auto;
+    }
+    .howit-box.right {
+      right: -350px;
+      left: auto;
+    }
+    @media (max-width: 1100px) {
+      .howit-box { width: 180px; max-width: 32vw; min-width: 120px; padding: 18px 10px; font-size: 0.98rem; }
+      .howit-box.left { left: -200px; }
+      .howit-box.right { right: -200px; }
+    }
+    @media (max-width: 800px) {
+      .howit-box { width: 90vw; max-width: 98vw; left: 50% !important; right: auto !important; transform: translate(-50%, -110%); top: 0; }
+      .howit-box.right { top: 100%; transform: translate(-50%, 10%); }
+    }
+    @media (max-width: 600px) {
+      .howit-box { font-size: 0.93rem; padding: 10px 4px; }
+    }
+    .howit-institutional {
+      margin-top: 36px;
+      text-align: center;
+      color: #5a4fcf;
+      font-size: 1.08rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.93);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(90,79,207,0.08);
+      padding: 18px 18px 12px 18px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 0;
+    }
+    @media (max-width: 800px) {
+      .howit-institutional { font-size: 0.98rem; padding: 10px 4px; max-width: 98vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ícone de contato -->
+  <div class="contact-icon" id="contactIcon" tabindex="0" aria-label="Contact Us">
+    <img src="assets/icon-email.png" alt="Contact Us">
+  </div>
+  <div class="contact-form-modal" id="contactFormModal" aria-modal="true" role="dialog">
+    <button class="close-btn" id="closeContactForm" aria-label="Close">&times;</button>
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <label for="user_name">Name</label>
+      <input type="text" id="user_name" name="user_name" required>
+      <label for="user_email">Email</label>
+      <input type="email" id="user_email" name="user_email" required>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <button type="submit" id="sendButton">Send</button>
+    </form>
+  </div>
+  <div class="main-content">
+    <div class="how-it-works-container">
+      <img src="assets/how-it-works.png" alt="How it works" class="how-it-works-img">
+      <div class="howit-box left">
+        As soon as the employee clicks the "Send" button, all information about the care and activities performed at the client's residence is instantly transmitted to the system. The company securely stores, processes, and organizes this data in real time. After verification, the information is forwarded to designated family members or supervisors, who are immediately notified about the services provided to their loved one.
+      </div>
+      <div class="howit-box right">
+        This digital process improves communication and transparency between caregivers and families, replacing outdated paper reports with a faster, more efficient, and eco-friendly solution. By digitizing the workflow, we ensure a modern, sustainable, and compassionate way to manage health and care information for everyone involved. We are developing these resources especially for homecare solutions. Contact us for info.
+      </div>
+    </div>
+  </div>
+  <!-- Logo fixo no canto inferior direito -->
+  <div class="corner-logo">
+    <img src="assets/lux_logo.png" alt="Lux Solutions Logo" class="corner-logo-img">
+  </div>
+  
+  <!-- Notificação -->
+  <div id="notification" class="notification"></div>
+  <script>
+    // 🔧 CONFIGURAÇÃO EMAILJS COMPLETA COM FALLBACK (SISTEMA QUE FUNCIONA)
+    const EMAILJS_CONFIG = {
+      USER_ID: 'bxzD1INYBWHAGX2NV',          // ✅ Seu User ID (Public Key)
+      SERVICE_ID: 'service_2qypb4t',          // ✅ Gmail Service ID (tentativa 1)
+      SERVICE_ID_FALLBACK: 'service_smdnzwm', // ✅ Outlook Service ID (fallback)
+      TEMPLATE_ID: 'template_zoekcxq'         // ✅ Template ID InisCare Contact Form (CORRETO)
+    };
+
+    // Inicializar EmailJS
+    (function() {
+      emailjs.init(EMAILJS_CONFIG.USER_ID);
+    })();
+
+    // Contact form modal logic
+    const contactIcon = document.getElementById('contactIcon');
+    const contactFormModal = document.getElementById('contactFormModal');
+    const closeContactForm = document.getElementById('closeContactForm');
+    
+    function openContactForm() {
+      contactFormModal.classList.add('open');
+      document.getElementById('user_name').focus();
+    }
+    
+    function closeContactFormModal() {
+      contactFormModal.classList.remove('open');
+    }
+    
+    contactIcon.addEventListener('click', openContactForm);
+    contactIcon.addEventListener('keypress', function(e){ if(e.key==='Enter'){ openContactForm(); }});
+    closeContactForm.addEventListener('click', closeContactFormModal);
+    
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape') closeContactFormModal();
+    });
+    
+    // Fecha ao clicar fora do modal
+    window.addEventListener('mousedown', function(e){
+      if(contactFormModal.classList.contains('open') && !contactFormModal.contains(e.target) && e.target!==contactIcon) {
+        closeContactFormModal();
+      }
+    });
+
+    // Envio do formulário com EmailJS (SISTEMA QUE FUNCIONA)
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      sendMessage();
+    });
+
+    function sendMessage() {
+      const sendButton = document.getElementById('sendButton');
+      const form = document.getElementById('contactForm');
+      
+      // Validar campos
+      if (!form.checkValidity()) {
+        showNotification('Please fill in all required fields.', 'error');
+        return;
+      }
+
+      // Desabilitar botão e mostrar loading
+      sendButton.disabled = true;
+      sendButton.textContent = 'Sending...';
+      showNotification('Sending message...', 'loading');
+
+      // Preparar dados do template (usando variáveis do template EmailJS)
+      const templateParams = {
+        user_name: document.getElementById('user_name').value,    // Template usa {{user_name}}
+        user_email: document.getElementById('user_email').value, // Template usa {{user_email}}
+        message: document.getElementById('message').value         // Template usa {{message}}
+      };
+
+      console.log('📧 Sending email with config:', EMAILJS_CONFIG);
+      console.log('📧 Template params:', templateParams);
+
+      // Verificar se EmailJS está carregado
+      if (typeof emailjs === 'undefined') {
+        console.error('❌ EmailJS not loaded!');
+        showNotification('Service not available. Please try again later.', 'error');
+        resetForm();
+        return;
+      }
+      
+      // Função para tentar enviar com fallback
+      function tryEmailSend(serviceId, attempt = 1) {
+        console.log(`📧 Attempt ${attempt}: Using service ${serviceId}`);
+        
+        return emailjs.send(serviceId, EMAILJS_CONFIG.TEMPLATE_ID, templateParams)
+          .then(function(response) {
+            console.log(`✅ SUCCESS on attempt ${attempt}!`, response.status, response.text);
+            showNotification('✅ Message sent successfully!', 'success');
+            form.reset();
+            resetForm();
+            setTimeout(closeContactFormModal, 2000);
+          })
+          .catch(function(error) {
+            console.error(`❌ Attempt ${attempt} failed:`, error);
+            
+            // Se primeira tentativa (Gmail) falhou, tentar Outlook
+            if (attempt === 1 && EMAILJS_CONFIG.SERVICE_ID_FALLBACK) {
+              showNotification('Trying alternative service...', 'loading');
+              return tryEmailSend(EMAILJS_CONFIG.SERVICE_ID_FALLBACK, 2);
+            }
+            
+            // Se todas tentativas falharam
+            console.error('❌ All attempts failed. Final error:', error);
+            let errorMsg = 'Failed to send message';
+            if (error.status === 400) errorMsg = 'Invalid request';
+            else if (error.status === 401) errorMsg = 'Authentication failed';
+            else if (error.status === 404) errorMsg = 'Service not found';
+            else if (error.text) errorMsg = error.text;
+            else if (error.message) errorMsg = error.message;
+            
+            showNotification('❌ ' + errorMsg, 'error');
+            resetForm();
+            throw error;
+          });
+      }
+
+      // Iniciar envio com Gmail, fallback para Outlook se necessário
+      tryEmailSend(EMAILJS_CONFIG.SERVICE_ID);
+    }
+
+    function resetForm() {
+      const sendButton = document.getElementById('sendButton');
+      sendButton.disabled = false;
+      sendButton.textContent = 'Send';
+    }
+
+    function showNotification(message, type) {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.className = `notification ${type}`;
+      notification.style.display = 'block';
+      
+      // Auto-hide depois de 5 segundos
+      setTimeout(function() {
+        notification.style.display = 'none';
+      }, 5000);
+    }
+
+    // Debug: Log configuração
+    console.log('📧 EmailJS Configuration:', EMAILJS_CONFIG);
+    console.log('🚀 EmailJS initialized and ready!');
+    
+    // 🧹 INTERCEPTAR E REMOVER MENSAGEM ANTIGA
+    function interceptAndRemoveOldMessage() {
+      // Procurar por qualquer elemento que contenha a mensagem
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(element => {
+        if (element.textContent && element.textContent.includes('Opening your email client')) {
+          console.log('🚨 Found old message element:', element);
+          element.remove();
+        }
+      });
+      
+      // Substituir qualquer texto que contenha a mensagem
+      const walker = document.createTreeWalker(
+        document.body,
+        NodeFilter.SHOW_TEXT,
+        null,
+        false
+      );
+      
+      let node;
+      while (node = walker.nextNode()) {
+        if (node.textContent.includes('Opening your email client')) {
+          console.log('🚨 Found text node with old message:', node);
+          node.textContent = node.textContent.replace('Opening your email client', 'Sending email...');
+        }
+      }
+    }
+    
+    // Executar interceptação várias vezes
+    document.addEventListener('DOMContentLoaded', interceptAndRemoveOldMessage);
+    setTimeout(interceptAndRemoveOldMessage, 100);
+    setTimeout(interceptAndRemoveOldMessage, 500);
+    setTimeout(interceptAndRemoveOldMessage, 1000);
+    setTimeout(interceptAndRemoveOldMessage, 2000);
+    
+    // Observar mudanças no DOM
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach(function(node) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.textContent && node.textContent.includes('Opening your email client')) {
+                console.log('🚨 MutationObserver caught old message:', node);
+                node.remove();
+              }
+            }
+          });
+        }
+      });
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  </script>
+</body>
+</html> 
