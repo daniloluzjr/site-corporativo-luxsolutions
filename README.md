@@ -1,4 +1,4 @@
-# 🌐 Site Corporativo - Lux Solutions
+# 🌐 Lux Health Systems
 
 Site profissional da Lux Solutions Health Systems, apresentando soluções tecnológicas para o setor de saúde.
 
