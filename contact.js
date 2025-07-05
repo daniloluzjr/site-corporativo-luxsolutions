@@ -34,16 +34,14 @@ contactForm.addEventListener('submit', function(e) {
   submitButton.textContent = 'Sending...';
   showStatus('Sending your message...', 'loading');
 
-  // Prepare form data
-  const formData = new FormData();
-  formData.append('name', name);
-  formData.append('email', email);
-  formData.append('message', message);
+  // Prepare data as JSON
+  const data = { name, email, message };
 
-  // Send data to PHP endpoint
-  fetch('send_contact.php', {
+  // Send data to Vercel serverless API endpoint
+  fetch('/api/send-contact', {
     method: 'POST',
-    body: formData
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
   })
     .then(response => response.json())
     .then(data => {
