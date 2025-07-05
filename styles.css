@@ -105,6 +105,7 @@ body {
   body {
     background: url('assets/background_mobile.png') no-repeat center center fixed;
     background-size: cover;
+    background-color: #f5f5fa;
   }
   .how-it-works-container {
     display: flex;
@@ -129,5 +130,24 @@ body {
   }
   .howit-box.right {
     margin-top: 0;
+  }
+  .how-it-works-img {
+    width: 140px;
+    max-width: 33vw;
+    margin-top: 24px;
+  }
+  .corner-logo {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 200;
+    margin-bottom: 24px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(90,79,207,0.10);
+    padding: 8px 14px;
+  }
+  .corner-logo-img {
+    width: 80px;
   }
 } 
