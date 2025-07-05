@@ -146,10 +146,60 @@
       display: block;
     }
     @media (max-width: 600px) {
-      .corner-logo { right: 8px; bottom: 8px; padding: 3px 7px; border-radius: 14px; }
-      .corner-logo-img { width: 120px; }
+      body {
+        background: url('assets/background-mobile.png') no-repeat center center fixed;
+        background-size: cover;
+      }
+      .corner-logo {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: auto;
+        bottom: auto;
+        padding: 3px 7px;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.92);
+        box-shadow: 0 2px 8px rgba(90,79,207,0.08);
+      }
+      .corner-logo-img {
+        width: 90px;
+        max-width: 30vw;
+      }
+      .main-content {
+        min-height: 0;
+        margin-top: 30px;
+      }
+      .how-it-works-img {
+        width: 80vw;
+        max-width: 320px;
+        margin-top: 36px;
+        margin-bottom: 14px;
+        display: block;
+      }
+      .howit-box,
+      .how-it-works-container:hover .howit-box,
+      .how-it-works-container:focus-within .howit-box {
+        display: none !important;
+      }
+      .howit-box-mobile {
+        display: block;
+        background: rgba(255,255,255,0.95);
+        color: #5a4fcf;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+        padding: 18px 12px;
+        font-size: 1.03rem;
+        font-family: inherit;
+        z-index: 30;
+        text-align: justify;
+        font-weight: 500;
+        margin: 0 auto 22px auto;
+        max-width: 95vw;
+      }
     }
-    /* Hotspots para tooltips sobre a imagem */
+    .howit-box-mobile {
+      display: none;
+    }
     .hotspot {
       position: absolute;
       z-index: 20;
@@ -281,6 +331,11 @@
         As soon as the employee clicks the "Send" button, all information about the care and activities performed at the client's residence is instantly transmitted to the system. The company securely stores, processes, and organizes this data in real time. After verification, the information is forwarded to designated family members or supervisors, who are immediately notified about the services provided to their loved one.
       </div>
       <div class="howit-box right">
+        This digital process improves communication and transparency between caregivers and families, replacing outdated paper reports with a faster, more efficient, and eco-friendly solution. By digitizing the workflow, we ensure a modern, sustainable, and compassionate way to manage health and care information for everyone involved. We are developing these resources especially for homecare solutions. Contact us for info.
+      </div>
+      <!-- Mobile unified box -->
+      <div class="howit-box-mobile">
+        As soon as the employee clicks the "Send" button, all information about the care and activities performed at the client's residence is instantly transmitted to the system. The company securely stores, processes, and organizes this data in real time. After verification, the information is forwarded to designated family members or supervisors, who are immediately notified about the services provided to their loved one.<br><br>
         This digital process improves communication and transparency between caregivers and families, replacing outdated paper reports with a faster, more efficient, and eco-friendly solution. By digitizing the workflow, we ensure a modern, sustainable, and compassionate way to manage health and care information for everyone involved. We are developing these resources especially for homecare solutions. Contact us for info.
       </div>
     </div>
