@@ -38,7 +38,7 @@ contactForm.addEventListener('submit', function(e) {
   const data = { name, email, message };
 
   // Send data to Vercel serverless API endpoint
-  fetch('/api/send-contact', {
+  fetch('/.netlify/functions/send-contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
