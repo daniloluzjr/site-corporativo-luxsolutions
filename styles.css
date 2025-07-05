@@ -103,10 +103,9 @@ body {
 
 @media (max-width: 800px) {
   body {
-    background: url('assets/background_mobile.png') no-repeat center center fixed;
+    background: url('assets/background_mobile.png') no-repeat center center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
   }
   .how-it-works-container {
     display: flex;
