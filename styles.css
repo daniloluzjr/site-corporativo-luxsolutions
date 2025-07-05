@@ -109,8 +109,20 @@ body {
   .how-it-works-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     position: static;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding-left: 16px;
+  }
+  .how-it-works-img {
+    width: 66vw;
+    max-width: 400px;
+    margin-top: 80px;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
   }
   .howit-box {
     position: static;
@@ -123,17 +135,13 @@ body {
     display: block;
     transform: none;
     box-shadow: 0 2px 12px rgba(90,79,207,0.10);
+    background: rgba(255,255,255,0.85);
   }
   .howit-box.left {
     margin-bottom: 10px;
   }
   .howit-box.right {
     margin-top: 0;
-  }
-  .how-it-works-img {
-    width: 66vw;
-    max-width: 400px;
-    margin-top: 24px;
   }
   .corner-logo {
     position: fixed;
