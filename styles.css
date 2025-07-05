@@ -99,4 +99,35 @@ body {
 .howit-box.right {
   right: -370px;
   left: auto;
+}
+
+@media (max-width: 800px) {
+  body {
+    background: url('assets/background_mobile.png') no-repeat center center fixed;
+    background-size: cover;
+  }
+  .how-it-works-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: static;
+  }
+  .howit-box {
+    position: static;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    min-height: unset;
+    width: 90vw;
+    max-width: 500px;
+    margin: 18px 0 0 0;
+    display: block;
+    transform: none;
+    box-shadow: 0 2px 12px rgba(90,79,207,0.10);
+  }
+  .howit-box.left {
+    margin-bottom: 10px;
+  }
+  .howit-box.right {
+    margin-top: 0;
+  }
 } 
