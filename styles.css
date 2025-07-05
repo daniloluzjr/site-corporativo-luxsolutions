@@ -137,10 +137,12 @@ body {
   }
   .corner-logo {
     position: fixed;
-    right: 16px;
-    bottom: 16px;
+    left: 16px;
+    top: 16px;
+    right: auto;
+    bottom: auto;
     z-index: 200;
-    margin-bottom: 24px;
+    margin: 0;
     background: rgba(255,255,255,0.85);
     border-radius: 18px;
     box-shadow: 0 2px 8px rgba(90,79,207,0.10);
