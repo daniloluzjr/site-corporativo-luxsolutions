@@ -105,7 +105,6 @@ body {
   body {
     background: url('assets/background_mobile.png') no-repeat center center fixed;
     background-size: cover;
-    background-color: #f5f5fa;
   }
   .how-it-works-container {
     display: flex;
@@ -132,8 +131,8 @@ body {
     margin-top: 0;
   }
   .how-it-works-img {
-    width: 140px;
-    max-width: 33vw;
+    width: 66vw;
+    max-width: 400px;
     margin-top: 24px;
   }
   .corner-logo {
