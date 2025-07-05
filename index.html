@@ -272,6 +272,7 @@
       z-index: 30;
       text-align: justify;
       font-weight: 500;
+      transition: opacity 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
     }
     .how-it-works-container:hover .howit-box,
     .how-it-works-container:focus-within .howit-box {
@@ -279,11 +280,11 @@
       pointer-events: auto;
     }
     .howit-box.left {
-      left: -350px;
+      left: -370px;
       right: auto;
     }
     .howit-box.right {
-      right: -350px;
+      right: -370px;
       left: auto;
     }
     @media (max-width: 1100px) {
@@ -292,11 +293,7 @@
       .howit-box.right { right: -200px; }
     }
     @media (max-width: 800px) {
-      .howit-box { width: 90vw; max-width: 98vw; left: 50% !important; right: auto !important; transform: translate(-50%, -110%); top: 0; }
-      .howit-box.right { top: 100%; transform: translate(-50%, 10%); }
-    }
-    @media (max-width: 600px) {
-      .howit-box { font-size: 0.93rem; padding: 10px 4px; }
+      .howit-box { display: none !important; }
     }
     .howit-institutional {
       margin-top: 36px;
@@ -328,10 +325,10 @@
     <div class="how-it-works-container">
       <img src="assets/how-it-works.png" alt="How it works" class="how-it-works-img">
 
-      <div class="howit-box howit-box-left">
+      <div class="howit-box left">
         As soon as the employee clicks the "Send" button, all information about the care and activities performed at the client's residence is instantly transmitted to the system. The company securely stores, processes, and organizes this data in real time. After verification, the information is forwarded to designated family members or supervisors, who are immediately notified about the services provided to their loved one.
       </div>
-      <div class="howit-box howit-box-right">
+      <div class="howit-box right">
         This digital process improves communication and transparency between caregivers and families, replacing outdated paper reports with a faster, more efficient, and eco-friendly solution. By digitizing the workflow, we ensure a modern, sustainable, and compassionate way to manage health and care information for everyone involved.
       </div>
     </div>
