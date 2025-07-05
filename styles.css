@@ -508,6 +508,8 @@ body {
   right: -340px;
   left: auto;
 }
+.how-it-works-img:hover + .howit-box,
+.how-it-works-img:focus + .howit-box,
 .how-it-works-container:hover .howit-box,
 .how-it-works-container:focus-within .howit-box {
   display: block;
