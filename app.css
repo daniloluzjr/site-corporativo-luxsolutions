@@ -9,12 +9,17 @@ body {
 }
 .container {
   max-width: 420px;
-  margin: 0 auto;
-  padding: 32px 16px 16px 16px;
+  width: 100vw;
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  padding: 0 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 260px;
+  margin: 0;
+  z-index: 10;
 }
 .logo {
   width: 110px;
