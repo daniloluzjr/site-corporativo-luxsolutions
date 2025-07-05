@@ -8,17 +8,14 @@ body {
   color: #222;
 }
 .container {
-  max-width: 420px;
-  width: calc(100vw - 32px);
-  position: fixed;
-  left: 50%;
-  bottom: 32px;
-  transform: translateX(-50%);
-  padding: 0 0;
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto 32px auto;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
+  margin-top: 420px;
   z-index: 10;
 }
 .logo {
