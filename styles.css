@@ -408,6 +408,14 @@ section h2 {
     color: #ccc;
 }
 
+body {
+  background: url('assets/background2.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  color: #222;
+  overflow-x: hidden;
+}
+
 /* Responsividade */
 
 /* Contact Icon (desktop e mobile) */
@@ -477,7 +485,7 @@ section h2 {
   .how-it-works-img {
     width: 80vw !important;
     max-width: 320px !important;
-    margin-top: 36px !important;
+    margin-top: 80px !important;
     margin-bottom: 14px !important;
     display: block !important;
   }

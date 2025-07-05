@@ -160,6 +160,11 @@ body {
 }
 
 @media (max-width: 600px) {
+  body {
+    background: url('assets/background_mobile.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    background-color: #f5f5fa !important;
+  }
   .back-button { 
     top: 16px; 
     left: 16px; 
