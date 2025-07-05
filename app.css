@@ -40,10 +40,11 @@ h1 {
   background: rgba(255,255,255,0.92);
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(90,79,207,0.10);
-  padding: 18px 14px;
+  padding: 18px 18px;
   margin-bottom: 18px;
   width: 100%;
   font-size: 1.08rem;
+  text-align: justify;
 }
 .instructions strong {
   color: #5a4fcf;
