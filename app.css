@@ -9,12 +9,12 @@ body {
 }
 .container {
   max-width: 420px;
-  width: 100vw;
+  width: calc(100vw - 32px);
   position: fixed;
   left: 50%;
   bottom: 32px;
   transform: translateX(-50%);
-  padding: 0 16px;
+  padding: 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
