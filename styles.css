@@ -573,10 +573,7 @@ body {
   }
 }
 
-/* Texto mobile (escondido no desktop) */
-.howit-box-mobile {
-  display: none;
-}
+/* .howit-box-mobile removido conforme solicitado */
 
 /* Responsividade para mobile */
 @media (max-width: 600px) {
@@ -661,43 +658,6 @@ body {
 }
 
 /* RESPONSIVIDADE HOW IT WORKS */
-@media (max-width: 600px) {
-  body {
-    background: url('assets/background_mobile.png') no-repeat center center fixed !important;
-    background-size: cover !important;
-    background-color: #f5f5fa !important;
-  }
-  .contact-icon {
-    top: 10px !important;
-    right: 10px !important;
-    padding: 6px !important;
-  }
-  .contact-icon img {
-    width: 26px !important;
-    height: 26px !important;
-  }
-  .main-content {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    min-height: 0 !important;
-    margin-top: 30px !important;
-  }
-  .corner-logo {
-    position: absolute !important;
-    top: 8px !important;
-    left: 8px !important;
-    right: auto !important;
-    bottom: auto !important;
-    padding: 3px 7px !important;
-    border-radius: 14px !important;
-    background: rgba(255,255,255,0.92) !important;
-    box-shadow: 0 2px 8px rgba(90,79,207,0.08) !important;
-  }
-  .corner-logo-img {
-    width: 90px !important;
-    max-width: 30vw !important;
-  }
   .main-content {
     min-height: 0 !important;
     margin-top: 30px !important;
