@@ -483,7 +483,7 @@ body {
 .howit-box {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+  transition: opacity 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -500,73 +500,28 @@ body {
   z-index: 30;
   text-align: justify;
   font-weight: 500;
-  transition: opacity 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
 }
-
 .how-it-works-container:hover .howit-box,
 .how-it-works-container:focus-within .howit-box {
   opacity: 1;
   pointer-events: auto;
 }
-
 .howit-box.left {
   left: -370px;
   right: auto;
 }
-
 .howit-box.right {
   right: -370px;
   left: auto;
 }
-
 @media (max-width: 1100px) {
   .howit-box { width: 180px; max-width: 32vw; min-width: 120px; padding: 18px 10px; font-size: 0.98rem; }
   .howit-box.left { left: -200px; }
   .howit-box.right { right: -200px; }
 }
-@media (max-width: 600px) {
-  .howit-box,
-  .how-it-works-container:hover .howit-box,
-  .how-it-works-container:focus-within .howit-box {
-    display: none !important;
-    opacity: 0 !important;
-  }
+@media (max-width: 800px) {
+  .howit-box { display: none !important; }
 }
-.howit-box-left {
-  left: -340px;
-  right: auto;
-}
-.howit-box-right {
-  right: -340px;
-  left: auto;
-}
-.how-it-works-img:hover + .howit-box,
-.how-it-works-img:focus + .howit-box,
-.how-it-works-container:hover .howit-box,
-.how-it-works-container:focus-within .howit-box {
-  display: block;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-@media (max-width: 1100px) {
-  .howit-box-left { left: -310px; }
-  .howit-box-right { right: -310px; }
-}
-@media (max-width: 900px) {
-  .howit-box-left { left: -220px; width: 220px; }
-  .howit-box-right { right: -220px; width: 220px; }
-}
-@media (max-width: 600px) {
-  .howit-box,
-  .how-it-works-container:hover .howit-box,
-  .how-it-works-container:focus-within .howit-box {
-    display: none !important;
-    opacity: 0 !important;
-  }
-}
-
-/* .howit-box-mobile removido conforme solicitado */
 
 /* Responsividade para mobile */
 @media (max-width: 600px) {
