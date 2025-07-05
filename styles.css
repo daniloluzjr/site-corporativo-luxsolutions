@@ -410,8 +410,47 @@ section h2 {
 
 /* Responsividade */
 
+/* Contact Icon (desktop e mobile) */
+.contact-icon {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 100;
+  cursor: pointer;
+  background: rgba(255,255,255,0.85);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 12px;
+  transition: box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-icon:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+.contact-icon img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
 /* RESPONSIVIDADE HOW IT WORKS */
 @media (max-width: 600px) {
+  body {
+    background: url('assets/background-mobile.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    background-color: #f5f5fa !important;
+  }
+  .contact-icon {
+    top: 10px !important;
+    right: 10px !important;
+    padding: 6px !important;
+  }
+  .contact-icon img {
+    width: 26px !important;
+    height: 26px !important;
+  }
   body {
     background: url('assets/background-mobile.png') no-repeat center center fixed !important;
     background-size: cover !important;
