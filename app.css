@@ -14,6 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 120px;
 }
 .logo {
   width: 110px;
@@ -49,6 +50,15 @@ h1 {
   font-size: 1rem;
 }
 .footer a {
+  color: #5a4fcf;
+  text-decoration: underline;
+}
+.help-text {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 1rem;
+}
+.help-text a {
   color: #5a4fcf;
   text-decoration: underline;
 }
