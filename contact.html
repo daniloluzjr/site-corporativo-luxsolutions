@@ -16,7 +16,10 @@
   </button>
   
   <div class="contact-container">
-    <form class="contact-form" id="contactForm">
+    <form id="contactForm" action="https://formsubmit.co/danilojun@gmail.com" method="POST">
+      <!-- Formsubmit disables captcha with this hidden input -->
+      <input type="hidden" name="_captcha" value="false">
+      
       <h1>Contact Us</h1>
       
       <label for="name">Name</label>
@@ -41,6 +44,6 @@
   
   <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="contact.js"></script>
+  
 </body>
 </html> 
