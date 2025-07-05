@@ -416,6 +416,155 @@ body {
   overflow-x: hidden;
 }
 
+/* Logo fixa no canto inferior direito (desktop) */
+.corner-logo {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.85);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+  padding: 13px 23px;
+  transition: box-shadow 0.2s;
+}
+.corner-logo-img {
+  width: 210px;
+  max-width: 44vw;
+  height: auto;
+  display: block;
+}
+
+/* Contact icon (desktop e mobile) */
+.contact-icon {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 100;
+  cursor: pointer;
+  background: rgba(255,255,255,0.85);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 12px;
+  transition: box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-icon:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+.contact-icon img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* How it works - imagem e caixas de texto */
+.how-it-works-img {
+  max-width: 420px;
+  width: 95vw;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+.how-it-works-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+.howit-box {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 440px;
+  width: 320px;
+  background: rgba(255,255,255,0.95);
+  color: #5a4fcf;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+  padding: 18px 12px;
+  font-size: 1.03rem;
+  font-family: inherit;
+  z-index: 30;
+  text-align: justify;
+  font-weight: 500;
+}
+.how-it-works-container:hover .howit-box,
+.how-it-works-container:focus-within .howit-box {
+  display: block;
+}
+.howit-box-2 {
+  top: 240px;
+}
+
+/* Texto mobile (escondido no desktop) */
+.howit-box-mobile {
+  display: none;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 600px) {
+  body {
+    background: url('assets/background_mobile.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    background-color: #f5f5fa !important;
+  }
+  .corner-logo {
+    position: absolute !important;
+    top: 8px !important;
+    left: 8px !important;
+    right: auto !important;
+    bottom: auto !important;
+    padding: 3px 7px !important;
+    border-radius: 14px !important;
+    background: rgba(255,255,255,0.92) !important;
+    box-shadow: 0 2px 8px rgba(90,79,207,0.08) !important;
+  }
+  .corner-logo-img {
+    width: 90px !important;
+    max-width: 30vw !important;
+  }
+  .main-content {
+    min-height: 0 !important;
+    margin-top: 30px !important;
+  }
+  .how-it-works-img {
+    width: 80vw !important;
+    max-width: 320px !important;
+    margin-top: 80px !important;
+    margin-bottom: 14px !important;
+    display: block !important;
+  }
+  .howit-box,
+  .how-it-works-container:hover .howit-box,
+  .how-it-works-container:focus-within .howit-box {
+    display: none !important;
+  }
+  .howit-box-mobile {
+    display: block !important;
+    background: rgba(255,255,255,0.95);
+    color: #5a4fcf;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(90,79,207,0.10);
+    padding: 18px 12px;
+    font-size: 1.03rem;
+    font-family: inherit;
+    z-index: 30;
+    text-align: justify;
+    font-weight: 500;
+    margin: 0 auto 22px auto;
+    max-width: 95vw;
+  }
+}
+
 /* Responsividade */
 
 /* Contact Icon (desktop e mobile) */
