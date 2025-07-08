@@ -101,6 +101,41 @@ body {
   left: auto;
 }
 
+.back-button {
+  position: fixed;
+  top: 32px;
+  left: 32px;
+  z-index: 100;
+  cursor: pointer;
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 12px;
+  transition: box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #5a4fcf;
+  width: 48px;
+  height: 48px;
+}
+
+.back-button:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 600px) {
+  .back-button { 
+    top: 16px; 
+    left: 16px; 
+    padding: 8px; 
+    width: 40px; 
+    height: 40px; 
+  }
+}
+
 @media (max-width: 800px) {
   body {
     background: url('assets/background_mobile.png') no-repeat center center;
