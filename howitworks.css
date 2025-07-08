@@ -1,6 +1,6 @@
 /* ================================
    HOW IT WORKS PAGE STYLES
-   Lux Health Systems
+   Based on contact_us.html styles
    ================================ */
 
 * { 
@@ -11,7 +11,7 @@
 
 body { 
     font-family: 'Quicksand', sans-serif; 
-    background: url('assets/fundo_app.png') center/cover fixed;
+    background: url('/Assets/fundo_app.png') center/cover fixed;
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -73,6 +73,7 @@ body {
     text-align: center; 
 }
 
+/* Video Section Styles */
 .video-section {
     margin-bottom: 20px;
 }
@@ -102,7 +103,7 @@ body {
 
 .video-container iframe {
     width: 100%;
-    height: 200px;
+    height: 250px;
     border-radius: 15px;
 }
 
@@ -164,6 +165,6 @@ body {
         padding: 0;
     }
     .video-container iframe {
-        height: 180px;
+        height: 200px;
     }
 } 
