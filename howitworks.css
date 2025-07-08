@@ -1,0 +1,169 @@
+/* ================================
+   HOW IT WORKS PAGE STYLES
+   Lux Health Systems
+   ================================ */
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    font-family: 'Quicksand', sans-serif; 
+    background: url('assets/fundo_app.png') center/cover fixed;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    margin: 0;
+    padding: 10px 0;
+}
+
+.container { 
+    background: #EDECF8; 
+    border-radius: 20px; 
+    width: 100%; 
+    max-width: 400px; 
+    min-height: 95vh;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    background-color: #897EC9;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 0 10px;
+    position: relative;
+}
+
+.back-icon, .profile-icon {
+    display: flex;
+    align-items: center;
+}
+
+.back-icon img, .profile-icon img {
+    height: 25px;
+    cursor: pointer;
+}
+
+.header h1 {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.content { 
+    flex: 1 1 auto; 
+    padding: 20px; 
+    text-align: center; 
+}
+
+.video-section {
+    margin-bottom: 20px;
+}
+
+.video-section h2 {
+    color: #5648C3;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.video-description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.video-info h3 {
+    color: #5648C3;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.learning-points {
+    list-style: none;
+    text-align: left;
+}
+
+.learning-points li {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer { 
+    background-color: #FFFFFF; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    padding: 0; 
+    height: 30px; 
+    width: 100%;
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px;
+}
+
+.footer img { 
+    width: 30px; 
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container { 
+        max-width: 90%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .container { 
+        max-width: 100%; 
+        margin: 0; 
+    }
+    .content { 
+        padding: 15px; 
+    }
+    body {
+        padding: 0;
+    }
+    .video-container iframe {
+        height: 180px;
+    }
+} 
