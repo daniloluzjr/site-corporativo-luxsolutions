@@ -73,6 +73,30 @@ h1 {
   color: #5a4fcf;
   text-decoration: underline;
 }
+
+.download-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #5a4fcf, #7c3aed);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(90,79,207,0.3);
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(90,79,207,0.4);
+  background: linear-gradient(135deg, #4c46b8, #6d28d9);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(90,79,207,0.3);
+}
 @media (min-width: 700px) {
   .container {
     margin-top: 48px;
