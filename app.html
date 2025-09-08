@@ -2,30 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Install Lux Health Systems App</title>
+  
+  <!-- SEO Meta Tags -->
+  <title>Download Lux Health Systems Mobile App - Digital Healthcare at Your Fingertips</title>
+  <meta name="description" content="Download the Lux Health Systems mobile app for iOS and Android. Access your digital health records, manage appointments, and take control of your healthcare journey on the go.">
+  <meta name="keywords" content="lux health app download, healthcare mobile app, digital health records app, medical app download, health management app, ios android healthcare">
+  <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Download Lux Health Systems Mobile App">
+  <meta property="og:description" content="Revolutionary digital healthcare app. Download now for iOS and Android to manage your health records digitally.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luxhealthsystems.com/app">
+  <meta property="og:image" content="assets/lux_logo.png">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Download Lux Health Systems App">
+  <meta name="twitter:description" content="Revolutionary digital healthcare app for iOS and Android.">
+  <meta name="twitter:image" content="assets/lux_logo.png">
+  
+  <!-- App Store Meta Tags -->
+  <meta name="apple-itunes-app" content="app-id=123456789">
+  <meta name="google-play-app" content="app-id=com.luxhealth.app">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/fav_icon.png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://luxhealthsystems.com/app">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="app.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Lux Health Systems",
+    "description": "Revolutionary digital healthcare mobile application for managing health records and appointments",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": ["iOS", "Android"],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lux Health Systems"
+    },
+    "downloadUrl": [
+      "https://apps.apple.com/app/lux-health-systems/id123456789",
+      "https://play.google.com/store/apps/details?id=com.luxhealth.app"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <img src="assets/lux_logo.png" alt="Lux Health Systems Logo" class="logo">
-  <div class="container">
-    <div class="instructions">
-      <h1>Install our App</h1>
-      <p>
-        <strong>For Android:</strong><br>
-                  <a href="luxhealthsystems-19.apk" download class="download-btn">📱 Click here to download APP</a><br>
-        <span style="font-size: 0.9em; color: #555;">Current version: 1.9</span><br>
-        Install the APK file on your Android device.<br>
-        <small><em>Note: You may need to enable "Unknown sources" in your device settings.</em></small><br>
-        <br>
-        <strong>For iPhone/iPad:</strong><br>
-        1. Open <a href="https://www.luxsolutions.tech/" target="_blank">https://www.luxsolutions.tech/</a> in <strong>Safari</strong>.<br>
-        2. Tap the <b>Share</b> button <img src="assets/share.png" alt="Share Icon"> and select <strong>"Add to Home Screen"</strong>.<br>
+  <!-- Skip to main content link for screen readers -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Botão voltar -->
+  <nav aria-label="Page navigation">
+    <button class="back-button" id="backButton" aria-label="Go back to main page" title="Back to Home">
+      <span aria-hidden="true">←</span>
+      <span class="visually-hidden">Back</span>
+    </button>
+  </nav>
+  
+  <main id="main-content" class="container">
+    <section class="instructions" aria-labelledby="app-heading">
+      <h1 id="app-heading">Download Our App</h1>
+      <p style="text-align: center; margin-bottom: 24px; color: #5a4fcf; font-weight: 600;">
+         Replacing the old care book with a digital, modern and revolutionary version - Download now and take control of your health records!
       </p>
-      <div class="help-text">
-        Need help? <a href="https://www.luxsolutions.tech/contact.html">Contact our support team</a>.
+      
+      <div style="display: flex; flex-direction: column; gap: 16px; margin: 24px 0;" role="region" aria-label="App download options">
+        <!-- Android Download -->
+        <div style="text-align: center; margin-bottom: 16px;">
+          <a href="luxhealthsystems-19.apk" download class="download-btn" 
+             aria-label="Download Lux Health Systems app for Android devices" 
+             title="Download Android App (APK file)">
+            <img src="assets/download_android.png" alt="" role="presentation">
+            <span class="visually-hidden">Download for Android</span>
+          </a>
+        </div>
+        
+        <!-- iOS Download -->
+        <div style="text-align: center;">
+          <a href="https://apps.apple.com/us/app/lux-health-systens/id6749400954" 
+             target="_blank" class="download-btn"
+             aria-label="Download Lux Health Systems app from Apple App Store (opens in new tab)"
+             title="Download from App Store">
+            <img src="assets/download_apple.png" alt="" role="presentation">
+            <span class="visually-hidden">Download for iOS</span>
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
+      
+      <div class="help-text">
+        Need help? <a href="contact.html" aria-label="Go to contact page for support">Contact our support team</a>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Logo fixo no canto inferior direito -->
+  <aside class="corner-logo" aria-label="Company logo">
+    <img src="assets/lux_logo.png" alt="Lux Health Systems Logo" class="corner-logo-img">
+  </aside>
+  
+  <script>
+    document.getElementById('backButton').addEventListener('click', function() {
+      window.location.href = 'index.html';
+    });
+  </script>
 </body>
-</html> 
+</html>

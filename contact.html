@@ -3,40 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Lux Solutions</title>
+  
+  <!-- SEO Meta Tags -->
+  <title>Contact Lux Health Systems - Get in Touch with Our Healthcare Technology Team</title>
+  <meta name="description" content="Contact Lux Health Systems for inquiries about our digital healthcare solutions. Get support, request demos, or learn more about our revolutionary health technology.">
+  <meta name="keywords" content="contact lux health, healthcare support, medical technology contact, health systems inquiry, digital health contact">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Contact Lux Health Systems - Healthcare Technology Support">
+  <meta property="og:description" content="Get in touch with our healthcare technology experts. Contact us for support, demos, or inquiries about our digital health solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luxhealthsystems.com/contact">
+  <meta property="og:image" content="assets/lux_logo.png">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Contact Lux Health Systems">
+  <meta name="twitter:description" content="Get in touch with our healthcare technology experts.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/fav_icon.png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://luxhealthsystems.com/contact">
+  
+  <!-- Preconnect for Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="contact.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Lux Health Systems",
+    "description": "Contact page for Lux Health Systems - digital healthcare technology solutions",
+    "url": "https://luxhealthsystems.com/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Lux Health Systems",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": "English"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
-  <!-- Botão voltar -->
-  <button class="back-button" id="backButton" aria-label="Back to main page">
-    ←
-  </button>
+  <!-- Skip to main content link for screen readers -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   
-  <div class="contact-container">
-    <form id="contactForm" class="contact-form" action="https://formsubmit.co/danilojun@gmail.com" method="POST">
-      <!-- Formsubmit disables captcha with this hidden input -->
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://www.luxsolutions.tech/">
+  <!-- Botão voltar -->
+  <nav aria-label="Page navigation">
+    <button class="back-button" id="backButton" aria-label="Go back to main page" title="Back to Home">
+      <span aria-hidden="true">←</span>
+      <span class="visually-hidden">Back</span>
+    </button>
+  </nav>
+  
+  <main id="main-content" class="contact-container">
+    <section aria-labelledby="contact-heading">
+      <form id="contactForm" class="contact-form" novalidate role="form" aria-labelledby="contact-heading">
+        <h1 id="contact-heading">Contact Us</h1>
+        <p class="form-description">Get in touch with our healthcare technology experts. We're here to help!</p>
+        
+        <div class="form-status" id="form-status" aria-live="polite" aria-atomic="true"></div>
       
-      <h1>Contact Us</h1>
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required minlength="2" maxlength="50" 
+               placeholder="Enter your full name" aria-describedby="name-error">
+        <div class="error-message" id="name-error"></div>
+      </div>
       
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required 
+               placeholder="your.email@example.com" aria-describedby="email-error">
+        <div class="error-message" id="email-error"></div>
+      </div>
       
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <div class="form-group">
+        <label for="phone">Phone Number (Optional)</label>
+        <input type="tel" id="phone" name="phone" 
+               placeholder="+1 (555) 123-4567" aria-describedby="phone-error">
+        <div class="error-message" id="phone-error"></div>
+      </div>
       
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="6" required></textarea>
+      <div class="form-group">
+        <label for="subject">Subject *</label>
+        <select id="subject" name="subject" required aria-describedby="subject-error">
+          <option value="">Select a topic</option>
+          <option value="general">General Inquiry</option>
+          <option value="demo">Request Demo</option>
+          <option value="support">Technical Support</option>
+          <option value="partnership">Partnership Opportunities</option>
+          <option value="other">Other</option>
+        </select>
+        <div class="error-message" id="subject-error"></div>
+      </div>
       
-      <button type="submit" id="submitButton">Send Message</button>
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" rows="6" required minlength="10" maxlength="1000"
+                  placeholder="Tell us how we can help you..." aria-describedby="message-error"></textarea>
+        <div class="char-counter"><span id="char-count">0</span>/1000</div>
+        <div class="error-message" id="message-error"></div>
+      </div>
       
-      <div class="form-status" id="formStatus"></div>
-    </form>
-  </div>
+      <fieldset class="form-group checkbox-group">
+        <legend class="visually-hidden">Agreement to terms</legend>
+        <label class="checkbox-label">
+          <input type="checkbox" id="privacy" name="privacy" required aria-describedby="privacy-error">
+          <span class="checkmark" aria-hidden="true"></span>
+          I agree to the <a href="#" target="_blank" aria-label="Privacy Policy (opens in new tab)">Privacy Policy</a> and <a href="#" target="_blank" aria-label="Terms of Service (opens in new tab)">Terms of Service</a> *
+        </label>
+        <div class="error-message" id="privacy-error"></div>
+      </fieldset>
+      
+      <button type="submit" class="submit-btn" id="submitBtn" aria-describedby="form-status">
+        <span class="btn-text">Send Message</span>
+        <span class="btn-loading" style="display: none;" aria-hidden="true">Sending...</span>
+      </button>
+      </form>
+    </section>
+  </main>
   
   <!-- Logo fixo no canto inferior direito -->
   <div class="corner-logo">
@@ -46,9 +144,199 @@
   <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
+    // Initialize EmailJS
+    emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your actual EmailJS public key
+    
+    // Form validation and submission
+    class ContactForm {
+      constructor() {
+        this.form = document.getElementById('contactForm');
+        this.submitBtn = document.getElementById('submitButton');
+        this.formStatus = document.getElementById('formStatus');
+        this.charCount = document.getElementById('char-count');
+        this.messageField = document.getElementById('message');
+        
+        this.init();
+      }
+      
+      init() {
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
+        this.messageField.addEventListener('input', this.updateCharCount.bind(this));
+        
+        // Real-time validation
+        const inputs = this.form.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+          input.addEventListener('blur', () => this.validateField(input));
+          input.addEventListener('input', () => this.clearError(input));
+        });
+      }
+      
+      validateField(field) {
+        const value = field.value.trim();
+        const fieldName = field.name;
+        let isValid = true;
+        let errorMessage = '';
+        
+        // Clear previous error
+        this.clearError(field);
+        
+        if (field.hasAttribute('required') && !value) {
+          errorMessage = `${this.getFieldLabel(field)} is required.`;
+          isValid = false;
+        } else if (fieldName === 'email' && value) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            errorMessage = 'Please enter a valid email address.';
+            isValid = false;
+          }
+        } else if (fieldName === 'phone' && value) {
+          const phoneRegex = /^[\+]?[1-9][\d\s\-\(\)]{7,15}$/;
+          if (!phoneRegex.test(value.replace(/\s/g, ''))) {
+            errorMessage = 'Please enter a valid phone number.';
+            isValid = false;
+          }
+        } else if (fieldName === 'name' && value) {
+          if (value.length < 2) {
+            errorMessage = 'Name must be at least 2 characters long.';
+            isValid = false;
+          }
+        } else if (fieldName === 'message' && value) {
+          if (value.length < 10) {
+            errorMessage = 'Message must be at least 10 characters long.';
+            isValid = false;
+          }
+        }
+        
+        if (!isValid) {
+          this.showError(field, errorMessage);
+        }
+        
+        return isValid;
+      }
+      
+      validateForm() {
+        const inputs = this.form.querySelectorAll('input[required], textarea[required], select[required]');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+          if (!this.validateField(input)) {
+            isValid = false;
+          }
+        });
+        
+        return isValid;
+      }
+      
+      showError(field, message) {
+        const errorElement = document.getElementById(`${field.name}-error`);
+        if (errorElement) {
+          errorElement.textContent = message;
+          errorElement.style.display = 'block';
+        }
+        field.classList.add('error');
+      }
+      
+      clearError(field) {
+        const errorElement = document.getElementById(`${field.name}-error`);
+        if (errorElement) {
+          errorElement.textContent = '';
+          errorElement.style.display = 'none';
+        }
+        field.classList.remove('error');
+      }
+      
+      getFieldLabel(field) {
+        const label = this.form.querySelector(`label[for="${field.id}"]`);
+        return label ? label.textContent.replace('*', '').trim() : field.name;
+      }
+      
+      updateCharCount() {
+        const count = this.messageField.value.length;
+        this.charCount.textContent = count;
+        
+        if (count > 1000) {
+          this.charCount.parentElement.style.color = '#e74c3c';
+        } else if (count > 800) {
+          this.charCount.parentElement.style.color = '#f39c12';
+        } else {
+          this.charCount.parentElement.style.color = '#7f8c8d';
+        }
+      }
+      
+      async handleSubmit(e) {
+        e.preventDefault();
+        
+        if (!this.validateForm()) {
+          this.showStatus('Please fix the errors above.', 'error');
+          return;
+        }
+        
+        this.setLoading(true);
+        
+        try {
+          const formData = new FormData(this.form);
+          const templateParams = {
+            from_name: formData.get('name'),
+            from_email: formData.get('email'),
+            phone: formData.get('phone') || 'Not provided',
+            subject: formData.get('subject'),
+            message: formData.get('message'),
+            to_email: 'danilojun@gmail.com'
+          };
+          
+          // Replace with your EmailJS service ID and template ID
+          await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+          
+          this.showStatus('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+          this.form.reset();
+          this.updateCharCount();
+          
+        } catch (error) {
+          console.error('EmailJS error:', error);
+          this.showStatus('Sorry, there was an error sending your message. Please try again later.', 'error');
+        }
+        
+        this.setLoading(false);
+      }
+      
+      setLoading(loading) {
+        const btnText = this.submitBtn.querySelector('.btn-text');
+        const btnLoading = this.submitBtn.querySelector('.btn-loading');
+        
+        if (loading) {
+          btnText.style.display = 'none';
+          btnLoading.style.display = 'inline';
+          this.submitBtn.disabled = true;
+        } else {
+          btnText.style.display = 'inline';
+          btnLoading.style.display = 'none';
+          this.submitBtn.disabled = false;
+        }
+      }
+      
+      showStatus(message, type) {
+        this.formStatus.textContent = message;
+        this.formStatus.className = `form-status ${type}`;
+        this.formStatus.style.display = 'block';
+        
+        // Auto-hide success messages after 5 seconds
+        if (type === 'success') {
+          setTimeout(() => {
+            this.formStatus.style.display = 'none';
+          }, 5000);
+        }
+      }
+    }
+    
+    // Initialize form when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new ContactForm();
+    });
+    
+    // Back button functionality
     document.getElementById('backButton').addEventListener('click', function() {
-      window.location.href = 'index.html'; // Altere para '/' se sua home for na raiz
+      window.location.href = 'index.html';
     });
   </script>
 </body>
-</html> 
+</html>

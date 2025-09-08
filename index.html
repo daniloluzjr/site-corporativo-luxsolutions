@@ -3,40 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lux Solutions - Healthcare Technology</title>
+  
+  <!-- SEO Meta Tags -->
+  <title>Lux Health Systems - Revolutionary Digital Healthcare Solutions</title>
+  <meta name="description" content="Transform your healthcare experience with Lux Health Systems. Digital health records, secure patient management, and cutting-edge medical technology solutions.">
+  <meta name="keywords" content="healthcare technology, digital health records, patient management, medical software, health systems, digital healthcare, medical technology">
+  <meta name="author" content="Lux Health Systems">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Lux Health Systems - Revolutionary Digital Healthcare Solutions">
+  <meta property="og:description" content="Transform your healthcare experience with our cutting-edge digital platform. Secure, efficient, and user-friendly health record management.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luxhealthsystems.com">
+  <meta property="og:image" content="assets/lux_logo.png">
+  <meta property="og:site_name" content="Lux Health Systems">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lux Health Systems - Revolutionary Digital Healthcare Solutions">
+  <meta name="twitter:description" content="Transform your healthcare experience with our cutting-edge digital platform.">
+  <meta name="twitter:image" content="assets/lux_logo.png">
+  
+  <!-- Favicon and Icons -->
   <link rel="icon" type="image/png" href="assets/fav_icon.png">
+  <link rel="apple-touch-icon" href="assets/fav_icon.png">
+  
+  <!-- Preconnect for Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Lux Health Systems",
+    "description": "Revolutionary digital healthcare solutions and health record management",
+    "url": "https://luxhealthsystems.com",
+    "logo": "https://luxhealthsystems.com/assets/lux_logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/luxhealthsystems",
+      "https://twitter.com/luxhealthsystems"
+    ]
+  }
+  </script>
+  
   <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-  <!-- Ícone de contato -->
-  <div class="contact-icon" id="contactIcon" tabindex="0" aria-label="Contact Us">
-    <img src="assets/icon-email.png" alt="Contact Us">
-  </div>
+  <!-- Skip to main content link for screen readers -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   
-  <div class="main-content">
-    <div class="how-it-works-container">
-      <img src="assets/how-it-works.png" alt="How it works" class="how-it-works-img">
+  <!-- Navigation icons -->
+  <nav aria-label="Quick navigation">
+    <!-- Ícone de contato -->
+    <button class="contact-icon" id="contactIcon" aria-label="Go to contact page" title="Contact Us">
+      <img src="assets/icon-email.png" alt="" role="presentation">
+    </button>
+    
+    <!-- Ícone de download do app -->
+    <button class="app-download-icon" id="appDownloadIcon" aria-label="Go to app download page" title="Download App">
+      <img src="assets/download_app.png" alt="" role="presentation">
+    </button>
+  </nav>
+  
+  <main id="main-content" class="main-content">
+    <section class="how-it-works-container" aria-labelledby="how-it-works-heading">
+      <h1 id="how-it-works-heading" class="visually-hidden">Lux Health Systems - How It Works</h1>
+      <img src="assets/how-it-works.png" alt="Lux Health Systems workflow diagram showing digital healthcare process" class="how-it-works-img">
       <div style="width:100%;text-align:center;margin:18px 0 0 0;">
-        <a href="howitworks.html" style="display:inline-block;padding:12px 28px;background:#5a4fcf;color:#fff;font-size:1.15rem;font-family:'Quicksand',sans-serif;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 2px 8px rgba(90,79,207,0.10);transition:background 0.2s;">▶️ Watch How it Works (Video)</a>
+        <a href="howitworks.html" 
+           style="display:inline-block;padding:12px 28px;background:#5a4fcf;color:#fff;font-size:1.15rem;font-family:'Quicksand',sans-serif;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 2px 8px rgba(90,79,207,0.10);transition:background 0.2s;"
+           aria-label="Watch video tutorial explaining how Lux Health Systems works"
+           title="Watch How it Works Video Tutorial">▶️ Watch How it Works (Video)</a>
       </div>
-      <div class="howit-box left">
+      <div class="howit-box left" role="region" aria-label="Process step 1">
+        <h2 class="visually-hidden">Step 1: Data Collection and Storage</h2>
         When the employee clicks "Send", all care and activity information from the client's residence is instantly sent to the system. The company securely stores and organizes this data in real time. After review, the information is forwarded to designated family members or supervisors, who are immediately notified about the services provided.
       </div>
-      <div class="howit-box right">
+      <div class="howit-box right" role="region" aria-label="Process step 2">
+        <h2 class="visually-hidden">Step 2: Digital Transformation Benefits</h2>
         This digital process improves communication and transparency between caregivers and families. It replaces outdated paper reports with a faster, more efficient, and eco-friendly solution. By digitizing the workflow, we ensure a modern, sustainable, and compassionate way to manage health and care information for everyone involved.
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
   
   <!-- Logo fixo no canto inferior direito -->
-  <div class="corner-logo">
-    <img src="assets/lux_logo.png" alt="Lux Solutions Logo" class="corner-logo-img">
-  </div>
+  <aside class="corner-logo" aria-label="Company logo">
+    <img src="assets/lux_logo.png" alt="Lux Health Systems Logo" class="corner-logo-img">
+  </aside>
   
   <script>
     // Contact icon redirects to contact page
@@ -45,9 +111,19 @@
       window.location.href = 'contact.html';
     }
     contactIcon.addEventListener('click', goToContactPage);
-    contactIcon.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        goToContactPage();
+    
+    // App download icon redirects to app page
+    const appDownloadIcon = document.getElementById('appDownloadIcon');
+    function goToAppPage() {
+      window.location.href = 'app.html';
+    }
+    appDownloadIcon.addEventListener('click', goToAppPage);
+    
+    // Enhanced keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      // ESC key to focus on main content
+      if (e.key === 'Escape') {
+        document.getElementById('main-content').focus();
       }
     });
   </script>

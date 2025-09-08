@@ -1,3 +1,60 @@
+/* ================================
+   MAIN STYLES FOR LUX HEALTH SYSTEMS
+   ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================================
+   ACCESSIBILITY STYLES
+   ================================ */
+
+/* Skip link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+    font-weight: bold;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Visually hidden content for screen readers */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Focus styles for better keyboard navigation */
+*:focus {
+    outline: 2px solid #5a4fcf;
+    outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+    outline: 3px solid #5a4fcf;
+    outline-offset: 2px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -48,15 +105,60 @@ body {
   z-index: 100;
   cursor: pointer;
   background: rgba(255,255,255,0.85);
+  border: none;
   border-radius: 50%;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.contact-icon:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 .contact-icon img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.app-download-icon {
+  position: fixed;
+  top: 32px;
+  right: 96px;
+  z-index: 100;
+  cursor: pointer;
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.app-download-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.app-download-icon:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.app-download-icon img {
   width: 32px;
   height: 32px;
   display: block;
@@ -136,12 +238,83 @@ body {
   }
 }
 
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .corner-logo {
+    right: 24px;
+    bottom: 24px;
+    padding: 10px 18px;
+  }
+  
+  .corner-logo-img {
+    width: 150px;
+  }
+}
+
+/* Mobile breakpoint */
 @media (max-width: 800px) {
   body {
     background: url('assets/background_mobile.png') no-repeat center center;
     background-size: cover;
     background-repeat: no-repeat;
   }
+  
+  .contact-icon {
+    top: 16px;
+    right: 16px;
+    padding: 8px;
+  }
+  
+  .contact-icon img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .app-download-icon {
+    top: 16px;
+    right: 72px;
+    padding: 8px;
+  }
+  
+  .app-download-icon img {
+    width: 28px;
+    height: 28px;
+  }
+
+/* Small mobile breakpoint */
+@media (max-width: 480px) {
+  .contact-icon {
+    top: 12px;
+    right: 12px;
+    padding: 6px;
+  }
+  
+  .contact-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .app-download-icon {
+    top: 12px;
+    right: 60px;
+    padding: 6px;
+  }
+  
+  .app-download-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .corner-logo {
+    left: 12px;
+    top: 12px;
+    padding: 6px 12px;
+  }
+  
+  .corner-logo-img {
+    width: 70px;
+  }
+}
   .how-it-works-container {
     display: flex;
     flex-direction: column;
@@ -195,4 +368,4 @@ body {
   .corner-logo-img {
     width: 80px;
   }
-} 
+}
