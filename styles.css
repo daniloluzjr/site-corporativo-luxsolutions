@@ -30,6 +30,13 @@
     top: 6px;
 }
 
+/* Hide skip link on mobile devices */
+@media (max-width: 800px) {
+    .skip-link {
+        display: none;
+    }
+}
+
 /* Visually hidden content for screen readers */
 .visually-hidden {
     position: absolute !important;
@@ -69,6 +76,16 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+}
+
+/* Prevent overscroll on mobile */
+@media (max-width: 800px) {
+  .main-content {
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 20px;
+  }
 }
 
 .how-it-works-img {
@@ -257,12 +274,36 @@ body {
     background: url('assets/background_mobile.png') no-repeat center center;
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  html {
+    height: 100%;
+    overflow-x: hidden;
   }
   
   .contact-icon {
+    position: fixed;
     top: 16px;
     right: 16px;
+    z-index: 100;
+    cursor: pointer;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     padding: 8px;
+    transition: box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-icon:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   }
   
   .contact-icon img {
@@ -271,9 +312,24 @@ body {
   }
   
   .app-download-icon {
+    position: fixed;
     top: 16px;
     right: 72px;
+    z-index: 100;
+    cursor: pointer;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     padding: 8px;
+    transition: box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .app-download-icon:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   }
   
   .app-download-icon img {
@@ -355,9 +411,9 @@ body {
   .corner-logo {
     position: fixed;
     left: 16px;
-    top: 16px;
+    bottom: 16px;
     right: auto;
-    bottom: auto;
+    top: auto;
     z-index: 200;
     margin: 0;
     background: rgba(255,255,255,0.85);
