@@ -382,9 +382,9 @@ body {
     padding-left: 0;
   }
   .how-it-works-img {
-    width: 60vw;
-    max-width: 350px;
-    margin-top: 60px;
+    width: 55vw;
+    max-width: 322px;
+    margin-top: 20px;
     margin-left: 0;
     margin-right: 0;
     display: block;
@@ -395,33 +395,27 @@ body {
     pointer-events: auto !important;
     min-height: unset;
     width: 90vw;
-    max-width: 500px;
-    margin: 18px auto 0 auto;
+    max-width: 480px;
+    margin: 15px auto 20px auto;
     display: block;
     transform: none;
     box-shadow: 0 2px 12px rgba(90,79,207,0.10);
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.90);
+    padding: 16px 18px;
+    border-radius: 12px;
   }
-  .howit-box.left {
-    margin-bottom: 10px;
+  .howit-box.unified p {
+    margin: 0 0 12px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
   }
-  .howit-box.right {
-    margin-top: 0;
+  .howit-box.unified p:last-child {
+    margin-bottom: 0;
   }
   .corner-logo {
-    position: fixed;
-    left: 16px;
-    bottom: 16px;
-    right: auto;
-    top: auto;
-    z-index: 200;
-    margin: 0;
-    background: rgba(255,255,255,0.85);
-    border-radius: 18px;
-    box-shadow: 0 2px 8px rgba(90,79,207,0.10);
-    padding: 8px 14px;
+    display: none;
   }
   .corner-logo-img {
-    width: 80px;
+    display: none;
   }
 }
