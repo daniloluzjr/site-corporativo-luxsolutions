@@ -61,14 +61,17 @@
     </script>
 </head>
 <body>
-    <!-- Skip to main content link for screen readers -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- Navigation -->
     <nav aria-label="Page navigation">
         <!-- Ícone de contato -->
         <button class="contact-icon" id="contactIcon" aria-label="Go to contact page" title="Contact Us">
             <img src="assets/icon-email.png" alt="" role="presentation">
+        </button>
+
+        <!-- Ícone de download do app -->
+        <button class="app-download-icon" id="appDownloadIcon" aria-label="Download our mobile app" title="Download App">
+            <img src="assets/download_app.png" alt="" role="presentation">
         </button>
 
         <button class="back-button" id="backButton" aria-label="Go back to main page" title="Back to Home">
@@ -107,6 +110,12 @@
         const contactIcon = document.getElementById('contactIcon');
         function goToContactPage() { window.location.href = 'contact.html'; }
         contactIcon.addEventListener('click', goToContactPage);
+        
+        // App download icon redirects to app page
+        const appDownloadIcon = document.getElementById('appDownloadIcon');
+        function goToAppPage() { window.location.href = 'app.html'; }
+        appDownloadIcon.addEventListener('click', goToAppPage);
+        
         // Botão voltar
         document.getElementById('backButton').addEventListener('click', function() {
             window.location.href = 'index.html';

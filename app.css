@@ -207,8 +207,15 @@ h1 {
   }
   
   .download-btn img {
-    width: 50px;
+    width: auto;
     height: 50px;
+    max-width: 200px;
+  }
+  
+  .download-btn {
+    margin: 12px 0;
+    display: block;
+    text-align: center;
   }
   
   .corner-logo {

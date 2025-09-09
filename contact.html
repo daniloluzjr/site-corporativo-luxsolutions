@@ -57,14 +57,12 @@
   </script>
 </head>
 <body>
-  <!-- Skip to main content link for screen readers -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
   
   <!-- Botão voltar -->
   <nav aria-label="Page navigation">
     <button class="back-button" id="backButton" aria-label="Go back to main page" title="Back to Home">
       <span aria-hidden="true">←</span>
-      <span class="visually-hidden">Back</span>
+
     </button>
   </nav>
   
@@ -91,7 +89,7 @@
       </div>
       
       <div class="form-group">
-        <label for="phone">Phone Number (Optional)</label>
+        <label for="phone">Phone Number</label>
         <input type="tel" id="phone" name="phone" 
                placeholder="+1 (555) 123-4567" aria-describedby="phone-error">
         <div class="error-message" id="phone-error"></div>
@@ -118,15 +116,6 @@
         <div class="error-message" id="message-error"></div>
       </div>
       
-      <fieldset class="form-group checkbox-group">
-        <legend class="visually-hidden">Agreement to terms</legend>
-        <label class="checkbox-label">
-          <input type="checkbox" id="privacy" name="privacy" required aria-describedby="privacy-error">
-          <span class="checkmark" aria-hidden="true"></span>
-          I agree to the <a href="#" target="_blank" aria-label="Privacy Policy (opens in new tab)">Privacy Policy</a> and <a href="#" target="_blank" aria-label="Terms of Service (opens in new tab)">Terms of Service</a> *
-        </label>
-        <div class="error-message" id="privacy-error"></div>
-      </fieldset>
       
       <button type="submit" class="submit-btn" id="submitBtn" aria-describedby="form-status">
         <span class="btn-text">Send Message</span>
