@@ -62,12 +62,17 @@ a:focus {
     outline-offset: 2px;
 }
 
+html {
+  overflow-x: visible;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: url('assets/background2.png') no-repeat center center fixed;
   background-size: cover;
+  overflow-x: visible;
 }
 
 .main-content {
@@ -76,6 +81,8 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  overflow-x: visible;
+  width: 100%;
 }
 
 /* Prevent overscroll on mobile */
@@ -188,7 +195,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 340px;
+  width: 320px;
   min-height: 220px;
   display: flex;
   align-items: center;
@@ -206,18 +213,51 @@ body {
 .how-it-works-container {
   position: relative;
   display: inline-block;
+  overflow: visible;
 }
 .how-it-works-container:hover .howit-box {
   opacity: 1;
   pointer-events: auto;
 }
 .howit-box.left {
-  left: -370px;
+  left: -450px;
   right: auto;
+  z-index: 31;
 }
 .howit-box.right {
-  right: -370px;
+  right: -450px;
   left: auto;
+  z-index: 32;
+}
+
+/* Desktop specific styles for tooltips */
+@media (min-width: 1024px) {
+  .howit-box.left {
+    left: -480px;
+  }
+  .howit-box.right {
+    right: -480px;
+  }
+  
+  .main-content {
+    padding: 0 100px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .howit-box.left {
+    left: -520px;
+  }
+  .howit-box.right {
+    right: -520px;
+  }
+}
+
+/* Ensure tooltips are visible on desktop */
+@media (min-width: 1024px) {
+  .how-it-works-container {
+    margin: 0 200px;
+  }
 }
 
 .back-button {
@@ -404,12 +444,12 @@ body {
     padding: 16px 18px;
     border-radius: 12px;
   }
-  .howit-box.unified p {
+  .howit-box p {
     margin: 0 0 12px 0;
     font-size: 0.95rem;
     line-height: 1.4;
   }
-  .howit-box.unified p:last-child {
+  .howit-box p:last-child {
     margin-bottom: 0;
   }
   .corner-logo {
