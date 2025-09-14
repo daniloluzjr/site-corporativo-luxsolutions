@@ -260,6 +260,26 @@ body {
   }
 }
 
+/* Responsive text control */
+.desktop-text {
+  display: block;
+}
+
+.mobile-text {
+  display: none;
+}
+
+/* Mobile: show short text, hide detailed text */
+@media (max-width: 1023px) {
+  .desktop-text {
+    display: none;
+  }
+  
+  .mobile-text {
+    display: block;
+  }
+}
+
 .back-button {
   position: fixed;
   top: 32px;
