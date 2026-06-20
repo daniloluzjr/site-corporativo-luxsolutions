@@ -130,7 +130,19 @@
     <img src="assets/lux_logo.png" alt="Lux Solutions Logo" class="corner-logo-img">
   </div>
   
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
+    // Configuração EmailJS herdada do site principal (SISTEMA QUE FUNCIONA)
+    const EMAILJS_CONFIG = {
+      USER_ID: 'bxzD1INYBWHAGX2NV',
+      SERVICE_ID: 'service_2qypb4t',
+      SERVICE_ID_FALLBACK: 'service_smdnzwm',
+      TEMPLATE_ID: 'template_zoekcxq'
+    };
+
+    emailjs.init(EMAILJS_CONFIG.USER_ID);
+
     // Form validation and submission
     class ContactForm {
       constructor() {
@@ -256,39 +268,38 @@
         }
         
         this.setLoading(true);
+        this.showStatus('Sending message...', 'loading');
         
-        try {
-          const formData = new FormData(this.form);
-          const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            message: formData.get('message')
-          };
-          
-          const response = await fetch('/api/send-contact', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          });
-          
-          const result = await response.json();
-          
-          if (result.success) {
-            this.showStatus('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
-            this.form.reset();
-            this.updateCharCount();
-          } else {
-            this.showStatus(result.error || 'Sorry, there was an error sending your message. Please try again later.', 'error');
-          }
-          
-        } catch (error) {
-          console.error('Submission error:', error);
-          this.showStatus('Sorry, there was an error sending your message. Please try again later.', 'error');
-        }
+        const formData = new FormData(this.form);
+        // Utilizando os nomes corretos esperados pelo template do EmailJS
+        const templateParams = {
+          user_name: formData.get('name'),
+          user_email: formData.get('email'),
+          message: formData.get('message')
+        };
         
-        this.setLoading(false);
+        const tryEmailSend = (serviceId, attempt = 1) => {
+          console.log(`Sending attempt ${attempt} with service ${serviceId}`);
+          return emailjs.send(serviceId, EMAILJS_CONFIG.TEMPLATE_ID, templateParams)
+            .then((response) => {
+              console.log('Success!', response.status, response.text);
+              this.showStatus('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+              this.form.reset();
+              this.updateCharCount();
+              this.setLoading(false);
+            })
+            .catch((err) => {
+              console.error(`Error on attempt ${attempt}:`, err);
+              if (attempt === 1 && EMAILJS_CONFIG.SERVICE_ID_FALLBACK) {
+                return tryEmailSend(EMAILJS_CONFIG.SERVICE_ID_FALLBACK, 2);
+              } else {
+                this.showStatus('Sorry, there was an error sending your message. Please try again later.', 'error');
+                this.setLoading(false);
+              }
+            });
+        };
+
+        tryEmailSend(EMAILJS_CONFIG.SERVICE_ID);
       }
       
       setLoading(loading) {
