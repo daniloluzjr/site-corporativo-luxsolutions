@@ -1,20 +1,8 @@
-const nodemailer = require('nodemailer');
+const https = require('https');
 
 module.exports = async (req, res) => {
   try {
     console.log('--- New Request Received ---');
-
-    const OUTLOOK_USER = process.env.OUTLOOK_USER;
-    const OUTLOOK_PASS = process.env.OUTLOOK_PASS;
-    const DEST_EMAIL = process.env.DEST_EMAIL;
-
-    console.log('OUTLOOK_USER is set:', !!OUTLOOK_USER);
-    console.log('OUTLOOK_PASS is set:', !!OUTLOOK_PASS ? 'Yes' : 'No');
-
-    if (!OUTLOOK_USER || !OUTLOOK_PASS || !DEST_EMAIL) {
-      console.error('Error: Missing one or more environment variables.');
-      return res.status(500).json({ success: false, error: 'Server configuration error.' });
-    }
 
     if (req.method !== 'POST') {
       return res.status(405).json({ success: false, error: 'Method not allowed' });
@@ -26,30 +14,58 @@ module.exports = async (req, res) => {
       return res.status(400).json({ success: false, error: 'Dados inválidos.' });
     }
 
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.office365.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: OUTLOOK_USER,
-        pass: OUTLOOK_PASS,
-      },
+    // Forward the request to the Railway API which already handles SMTP email sending via Brevo.
+    // This centralizes credentials on the Railway server and bypasses Vercel environment setup issues.
+    const data = JSON.stringify({
+      user_name: name,
+      user_email: email,
+      message: message
     });
 
-    const mailOptions = {
-      from: `${name} <${OUTLOOK_USER}>`,
-      to: DEST_EMAIL,
-      subject: 'Nova mensagem do site Lux Solutions',
-      text: `Nome: ${name}\nEmail: ${email}\nMensagem:\n${message}`,
-      replyTo: email,
+    const options = {
+      hostname: 'luxhealthsystem.up.railway.app',
+      port: 443,
+      path: '/api/contact_form.php',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(data)
+      }
     };
 
-    await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully!');
-    return res.status(200).json({ success: true });
+    const request = https.request(options, (response) => {
+      let body = '';
+      response.on('data', (chunk) => {
+        body += chunk;
+      });
+
+      response.on('end', () => {
+        try {
+          const parsed = JSON.parse(body);
+          if (parsed.success) {
+            console.log('Email forwarded and sent successfully via Railway backend!');
+            return res.status(200).json({ success: true });
+          } else {
+            console.error('Railway backend returned failure:', parsed);
+            return res.status(500).json({ success: false, error: parsed.message || 'Failed to send message.' });
+          }
+        } catch (e) {
+          console.error('Failed to parse Railway response:', body, e);
+          return res.status(500).json({ success: false, error: 'Malformed response from backend.' });
+        }
+      });
+    });
+
+    request.on('error', (error) => {
+      console.error('Proxy request connection error:', error);
+      return res.status(500).json({ success: false, error: 'Internal connection error.' });
+    });
+
+    request.write(data);
+    request.end();
 
   } catch (error) {
     console.error('--- UNCAUGHT ERROR ---', error);
-    return res.status(500).json({ success: false, error: 'An internal server error occurred.' });
+    return res.status(500).json({ success: false, error: error.message || 'An internal server error occurred.' });
   }
-}; 
+};
