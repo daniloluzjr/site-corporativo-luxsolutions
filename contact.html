@@ -130,18 +130,13 @@
     <img src="assets/lux_logo.png" alt="Lux Solutions Logo" class="corner-logo-img">
   </div>
   
-  <!-- EmailJS SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    // Initialize EmailJS
-    emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your actual EmailJS public key
-    
     // Form validation and submission
     class ContactForm {
       constructor() {
         this.form = document.getElementById('contactForm');
-        this.submitBtn = document.getElementById('submitButton');
-        this.formStatus = document.getElementById('formStatus');
+        this.submitBtn = document.getElementById('submitBtn');
+        this.formStatus = document.getElementById('form-status');
         this.charCount = document.getElementById('char-count');
         this.messageField = document.getElementById('message');
         
@@ -264,24 +259,32 @@
         
         try {
           const formData = new FormData(this.form);
-          const templateParams = {
-            from_name: formData.get('name'),
-            from_email: formData.get('email'),
-            phone: formData.get('phone') || 'Not provided',
-            subject: formData.get('subject'),
-            message: formData.get('message'),
-            to_email: 'danilojun@gmail.com'
+          const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message')
           };
           
-          // Replace with your EmailJS service ID and template ID
-          await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+          const response = await fetch('/api/send-contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
           
-          this.showStatus('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
-          this.form.reset();
-          this.updateCharCount();
+          const result = await response.json();
+          
+          if (result.success) {
+            this.showStatus('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+            this.form.reset();
+            this.updateCharCount();
+          } else {
+            this.showStatus(result.error || 'Sorry, there was an error sending your message. Please try again later.', 'error');
+          }
           
         } catch (error) {
-          console.error('EmailJS error:', error);
+          console.error('Submission error:', error);
           this.showStatus('Sorry, there was an error sending your message. Please try again later.', 'error');
         }
         
